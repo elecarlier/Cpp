@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:26:53 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/12 16:38:07 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:47:03 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Contact
 		std::string	lastName;
 		int			age;
 	public: //can be used outside
-		Contact(); //constructor, automaticallu called when an object of a class is created
+		Contact(); //constructor, automatically called when an object of a class is created
 		~Contact();
 
 		// /* setters */

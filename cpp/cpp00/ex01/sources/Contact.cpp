@@ -6,41 +6,56 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:13:50 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/12 16:37:40 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:45:23 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "../includes/Contact.hpp"
 
 
-Contact::Contact(){}
+Contact::Contact()
+{
+	std::cout << "Contact constructor called" << std::endl;
+}
 
-Contact::~Contact(){}
+Contact::~Contact()
+{
+	std::cout << "Contact desconstructor called" << std::endl;
+}
 
 
 void	Contact::setFirstName(const std::string &fname)
 {
-	firstName = fname;
+	this->firstName = fname;
 }
 
 void	Contact::setLastName(const std::string &Lname)
 {
-	lastName = Lname;
+	this->lastName = Lname;
 }
 void	Contact::setAge(int newAge)
 {
-	age = newAge;
+	// if (newAge <= 0)
+	// {
+
+	// }
+	// else
+	this->age = newAge;
 }
 
 std::string Contact::getFirstName() const
 {
-	return firstName;
+	return (this->firstName);
 }
 
 std::string Contact::getLastName() const
 {
-	return lastName;
+	return (this->lastName);
 }
 
 
+int Contact::getAge() const
+{
+	return (this->age);
+}
 
