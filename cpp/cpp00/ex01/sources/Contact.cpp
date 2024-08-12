@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:13:50 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/12 20:45:23 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:48:48 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ void	Contact::setLastName(const std::string &Lname)
 }
 void	Contact::setAge(int newAge)
 {
-	// if (newAge <= 0)
-	// {
+	if (newAge >= 0)
+		this->age = newAge;
+	else
+		std::cerr << "Error: Age must be greater than 0." << std::endl;
 
-	// }
-	// else
-	this->age = newAge;
 }
 
 std::string Contact::getFirstName() const
