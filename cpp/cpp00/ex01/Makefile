@@ -1,17 +1,10 @@
-NAME = phonebook
+NAME = megaphone
 
 CC = g++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-
-SRCS_DIR	=	./sources/
-HEAD_DIR	=	./includes/
-OBJ_DIR		=	${SRCS_DIR}.o
-
-SRCS = megaphone.cpp
-
+SRCS = $(wildcard sources/*.cpp) main.cpp
 OBJS = $(SRCS:.cpp=.o)
-
 
 all: $(NAME)
 
@@ -19,7 +12,11 @@ $(NAME): $(OBJS)
 	@echo "Linking the executable..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp
+sources/%.o: sources/%.cpp includes/%.hpp
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: %.cpp includes/%.hpp
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@
 
