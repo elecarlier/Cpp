@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:13:50 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/12 20:48:48 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:48:04 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Contact::~Contact()
 	std::cout << "Contact desconstructor called" << std::endl;
 }
 
+/* Seters */
 
 void	Contact::setFirstName(const std::string &fname)
 {
@@ -33,14 +34,23 @@ void	Contact::setLastName(const std::string &Lname)
 {
 	this->lastName = Lname;
 }
-void	Contact::setAge(int newAge)
-{
-	if (newAge >= 0)
-		this->age = newAge;
-	else
-		std::cerr << "Error: Age must be greater than 0." << std::endl;
 
+void	Contact::setNickname(const std::string &Nname)
+{
+	this->nickName = Nname;
 }
+
+void	Contact::setDarkestSecret(const std::string &Dsecret)
+{
+	this->darkestSecret = Dsecret;
+}
+
+void	Contact::setNumber(const int &number)
+{
+	this->phoneNumber = number;
+}
+
+/* Getters */
 
 std::string Contact::getFirstName() const
 {
@@ -52,9 +62,17 @@ std::string Contact::getLastName() const
 	return (this->lastName);
 }
 
-
-int Contact::getAge() const
+std::string Contact::getNickname() const
 {
-	return (this->age);
+	return (this->nickName);
 }
 
+std::string Contact::getDarkestSecret() const
+{
+	return (this->darkestSecret);
+}
+
+int	Contact::getNumber() const
+{
+	return (this->phoneNumber);
+}
