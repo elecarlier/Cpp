@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:42:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 15:59:33 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:43:23 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	PhoneBook::add_contact(void)
 		full = 0;
 		index = 0;
 	}
-	this->contacts[index].setFirstName(get_input("First name :"));
-	this->contacts[index].setLastName(get_input("Last name :"));
-	this->contacts[index].setNickname(get_input("Nickname :"));
-	this->contacts[index].setNumber(get_input("Phone number :"));
-	this->contacts[index].setDarkestSecret(get_input("Darkest secret :"));
+	this->contacts[index].setFirstName(get_input("First name : "));
+	this->contacts[index].setLastName(get_input("Last name : "));
+	this->contacts[index].setNickname(get_input("Nickname : "));
+	this->contacts[index].setNumber(get_input("Phone number : "));
+	this->contacts[index].setDarkestSecret(get_input("Darkest secret : "));
 	index++;
 	if (index == 8)
 		full = 1;

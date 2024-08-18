@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:13:50 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 15:51:37 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:43:40 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 Contact::Contact()
 {
-	std::cout << "Contact constructor called" << std::endl;
+	//std::cout << "Contact constructor called" << std::endl;
 }
 
 Contact::~Contact()
 {
-	std::cout << "Contact desconstructor called" << std::endl;
+	//std::cout << "Contact desconstructor called" << std::endl;
 }
 
 /* Seters */
