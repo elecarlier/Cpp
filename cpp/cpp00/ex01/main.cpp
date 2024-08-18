@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:32:03 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 18:25:07 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:24:42 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main()
 
 	while (1)
 	{
-		std::cout << "Please enter ADD, SEARCH or EXIT" << std::endl;
+		std::cout << "\033[1m" << "Please enter ADD, SEARCH or EXIT" << "\033[0m" << std::endl;
 		std::cin >> input;
 
 		if (input == "ADD" || input == "add")
@@ -31,7 +31,7 @@ int	main()
 			book.search();
 		}
 		else
-			std::cout << "Invalid option, please try again." << std::endl;
+			std::cout << "\033[31m" << "Invalid option, please try again..." << "\033[0m" <<  std::endl;
 
 
 	}

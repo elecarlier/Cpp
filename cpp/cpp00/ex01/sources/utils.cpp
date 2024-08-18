@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:54:28 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 19:04:39 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:36:20 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ std::string	get_input(std::string prompt)
 {
 	std::string	input;
 
-	std::cout << "Please enter the " << prompt;
+	std::cout << "\033[1m" << "Please enter "  << prompt << "\033[0m" ;
 	while(input.empty())
 	{
-		if (std::cin.peek() == '\n') std::cin.ignore();
 		std::getline(std::cin, input);
 		if (input.empty())
-			std::cout << "\nField " << prompt << " can not be empty. Please try again: ";
+		{
+			std::cout << "\033[31m" << "Field can not be empty. Please try again: " << "\033[0m" << std::endl;
+			std::cout << "\033[1m" << "Please enter "  << prompt << "\033[0m";
+		}
 	}
 	return (input);
 }
