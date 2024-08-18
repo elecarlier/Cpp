@@ -6,15 +6,15 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:26:53 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/15 15:05:26 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:49:23 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-# include <string>
-# include <iostream>
+
+#include "MyAwesomePhonebook.hpp"
 
 class Contact
 {

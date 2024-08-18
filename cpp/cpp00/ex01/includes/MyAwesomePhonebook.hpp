@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   MyAwesomePhonebook.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 18:35:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 15:58:29 by ecarlier         ###   ########.fr       */
+/*   Created: 2024/08/18 15:47:32 by ecarlier          #+#    #+#             */
+/*   Updated: 2024/08/18 15:56:12 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef MYAWESOMEPHONEBOOK_HPP
+#define MYAWESOMEPHONEBOOK_HPP
 
+#include <string>
+#include <iostream>
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-#include "MyAwesomePhonebook.hpp"
-
-
-class PhoneBook
-{
-	private:
-		Contact	contacts[8];
-		bool	full;
-		int		index;
-
-	public:
-		PhoneBook(); //constructor, automatically called when an object of a class is created
-		~PhoneBook();
-
-		void	add_contact(void);
-		void	search(void);
-		void	exit(void);
-
-
-
-
-};
-
+std::string	get_input(std::string prompt);
 
 #endif

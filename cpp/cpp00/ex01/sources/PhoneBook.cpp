@@ -6,12 +6,11 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:42:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/15 15:17:43 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:59:33 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Contact.hpp"
-#include "../includes/PhoneBook.hpp"
+#include "MyAwesomePhonebook.hpp"
 
 PhoneBook::PhoneBook()
 {
@@ -29,7 +28,7 @@ PhoneBook::~PhoneBook()
 /*
 Save a new contact
 */
-void	PhoneBook::add_contact(Contact contact)
+void	PhoneBook::add_contact(void)
 {
 
 	std::cout << "\n -- Adding a new contact -- " << std::endl;
@@ -46,7 +45,6 @@ void	PhoneBook::add_contact(Contact contact)
 	index++;
 	if (index == 8)
 		full = 1;
-
 }
 
 /*
@@ -74,17 +72,3 @@ void	PhoneBook::exit()
 ◦ The program quits and the contacts are lost forever */
 
 
-
-std::string	get_input(std::string prompt)
-{
-	std::string	input;
-
-	std::cout << "\nPlease enter the " << prompt;
-	while(input.empty())
-	{
-		std::getline(std::cin, input);
-		if (input.empty())
-			std::cout << "\nField " << prompt << " can not be empty. Please try again: ";
-	}
-	return (input);
-}

@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 18:35:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 15:58:29 by ecarlier         ###   ########.fr       */
+/*   Created: 2024/08/18 15:54:28 by ecarlier          #+#    #+#             */
+/*   Updated: 2024/08/18 15:57:15 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "../includes/MyAwesomePhonebook.hpp"
 
-
-#include "MyAwesomePhonebook.hpp"
-
-
-class PhoneBook
+std::string	get_input(std::string prompt)
 {
-	private:
-		Contact	contacts[8];
-		bool	full;
-		int		index;
+	std::string	input;
 
-	public:
-		PhoneBook(); //constructor, automatically called when an object of a class is created
-		~PhoneBook();
-
-		void	add_contact(void);
-		void	search(void);
-		void	exit(void);
-
-
-
-
-};
-
-
-#endif
+	std::cout << "\nPlease enter the " << prompt;
+	while(input.empty())
+	{
+		std::getline(std::cin, input);
+		if (input.empty())
+			std::cout << "\nField " << prompt << " can not be empty. Please try again: ";
+	}
+	return (input);
+}
