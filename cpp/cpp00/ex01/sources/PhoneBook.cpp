@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:42:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 21:00:57 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 22:35:33 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,9 @@ void	PhoneBook::display(void)
 		<< std::setw(10) << truncate_str(this->contacts[i].getNickname()) << '\n';
 	}
 }
-/*
-Save a new contact
-*/
+
 void	PhoneBook::add_contact(void)
 {
-
 	std::cout << "\033[35m" << " -- Adding a new contact -- " << "\033[0m" << std::endl;
 	if (full)
 	{
@@ -72,18 +69,6 @@ void	PhoneBook::add_contact(void)
 	std::cout << "\033[35m" << "Contact successfully added.." <<  "\033[0m" << std::endl;
 }
 
-/*
-display a specific contact
-◦ Display the saved contacts as a list of 4 columns: index, first name, last
-name and nickname.
-◦ Each column must be 10 characters wide. A pipe character (’|’) separates
-them. The text must be right-aligned. If the text is longer than the column,
-it must be truncated and the last displayable character must be replaced by a
-dot (’.’).
-◦ Then, prompt the user again for the index of the entry to display. If the index
-is out of range or wrong, define a relevant behavior. Otherwise, display the
-contact information, one field per line
- */
 void	PhoneBook::search()
 {
 	std::string	input;
@@ -95,18 +80,17 @@ void	PhoneBook::search()
 	}
 	display();
 	std::cout << "\nEnter the index of the contact you would like to see : " << std::endl;
+	if (std::cin.peek() == '\n') std::cin.ignore();
 	while (1)
 	{
 		std::getline(std::cin, input);
-
-
 		if (input.length() == 1)
 		{
 			int index_i = input[0] - 49;
-			if (index_i >= 8 || index_i < 0 || index_i > this->count)
+			if (index_i >= 8 || index_i < 0 || index_i >= this->count)
 			{
-				std::cout << "\033[31m" << "Index out of range. Please enter a valid index.. " << "\033[0m" << std::endl;
-				std::cout << "\nEnter the index of the contact you would like to see : " << std::endl;
+				std::cout << "\033[31m" << "Invalid index. Please enter a valid index.. " << "\033[0m" << std::endl;
+				std::cout << "Enter the index of the contact you would like to see : " << std::endl;
 			}
 			else
 			{
@@ -118,16 +102,12 @@ void	PhoneBook::search()
 				break;
 			}
 		}
-
-
+		else
+		{
+			std::cout << "\033[31m" << "Index out of range. Please enter a valid index.. " << "\033[0m" << std::endl;
+			std::cout << "\033[1m" << "Enter the index of the contact you would like to see : " << "\033[0m" << std::endl;
+		}
 	}
 }
-
-void	PhoneBook::exit()
-{
-
-}
-/* EXIT
-◦ The program quits and the contacts are lost forever */
 
 

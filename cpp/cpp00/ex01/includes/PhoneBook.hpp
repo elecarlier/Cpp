@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 18:35:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 20:27:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 22:19:08 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,7 @@ class PhoneBook
 
 		void	add_contact(void);
 		void	search(void);
-		void	exit(void);
 		void	display(void);
-
-
-
-
 };
 
 
