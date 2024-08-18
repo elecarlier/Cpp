@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:26:53 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/15 13:46:53 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/15 15:05:26 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Contact
 		std::string	firstName;
 		std::string	lastName;
 		std::string	nickName;
-		int			phoneNumber;
+		std::string	phoneNumber;
 		std::string	darkestSecret;
 
 	public: //can be used outside
@@ -33,7 +33,7 @@ class Contact
 		void	setFirstName(const std::string &fname);
 		void	setLastName(const std::string &Lname);
 		void	setNickname(const std::string &Nname);
-		void	setNumber(const int &number);
+		void	setNumber(const std::string &number);
 		void	setDarkestSecret(const std::string &Dsecret);
 
 		// /* getters */
@@ -41,7 +41,7 @@ class Contact
 		std::string getLastName() const;
 		std::string	getNickname() const;
 		std::string	getDarkestSecret() const;
-		int			getNumber() const;
+		std::string	getNumber() const;
 };
 
 #endif

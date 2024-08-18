@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 18:35:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/15 13:51:12 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:59:18 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class PhoneBook
 	private:
 		Contact	contacts[8];
 		bool	full;
+		int		index;
+
 	public:
 		PhoneBook(); //constructor, automaticallu called when an object of a class is created
 		~PhoneBook();

@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:42:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/15 13:54:39 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/15 15:17:43 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 PhoneBook::PhoneBook()
 {
 	std::cout << "PhoneBook constructor called" << std::endl;
+	this->index = 0;
 	this->full = 0;
 }
 
@@ -26,14 +27,25 @@ PhoneBook::~PhoneBook()
 
 
 /*
-save a new contact
-If the user enters this command, they are prompted to input the information
-of the new contact one field at a time. Once all the fields have been completed,
-add the contact to the phonebook.
-A saved contact can’t have empty fields.
+Save a new contact
 */
 void	PhoneBook::add_contact(Contact contact)
 {
+
+	std::cout << "\n -- Adding a new contact -- " << std::endl;
+	if (full)
+	{
+		full = 0;
+		index = 0;
+	}
+	this->contacts[index].setFirstName(get_input("First name :"));
+	this->contacts[index].setLastName(get_input("Last name :"));
+	this->contacts[index].setNickname(get_input("Nickname :"));
+	this->contacts[index].setNumber(get_input("Phone number :"));
+	this->contacts[index].setDarkestSecret(get_input("Darkest secret :"));
+	index++;
+	if (index == 8)
+		full = 1;
 
 }
 
@@ -60,3 +72,19 @@ void	PhoneBook::exit()
 }
 /* EXIT
 ◦ The program quits and the contacts are lost forever */
+
+
+
+std::string	get_input(std::string prompt)
+{
+	std::string	input;
+
+	std::cout << "\nPlease enter the " << prompt;
+	while(input.empty())
+	{
+		std::getline(std::cin, input);
+		if (input.empty())
+			std::cout << "\nField " << prompt << " can not be empty. Please try again: ";
+	}
+	return (input);
+}

@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:13:50 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/15 13:48:04 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/15 15:05:41 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	Contact::setDarkestSecret(const std::string &Dsecret)
 	this->darkestSecret = Dsecret;
 }
 
-void	Contact::setNumber(const int &number)
+void	Contact::setNumber(const std::string &number)
 {
 	this->phoneNumber = number;
 }
@@ -72,7 +72,7 @@ std::string Contact::getDarkestSecret() const
 	return (this->darkestSecret);
 }
 
-int	Contact::getNumber() const
+std::string	Contact::getNumber() const
 {
 	return (this->phoneNumber);
 }
