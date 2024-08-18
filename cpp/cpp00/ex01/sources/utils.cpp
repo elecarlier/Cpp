@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 15:54:28 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 16:42:29 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 19:04:39 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ std::string	get_input(std::string prompt)
 {
 	std::string	input;
 
-	std::cout << "\nPlease enter the " << prompt;
+	std::cout << "Please enter the " << prompt;
 	while(input.empty())
 	{
 		if (std::cin.peek() == '\n') std::cin.ignore();
@@ -25,4 +25,11 @@ std::string	get_input(std::string prompt)
 			std::cout << "\nField " << prompt << " can not be empty. Please try again: ";
 	}
 	return (input);
+}
+
+std::string truncate_str(std::string str)
+{
+	if (str.length() > 10)
+		return (str.substr(0,9).append("."));
+	return (str);
 }

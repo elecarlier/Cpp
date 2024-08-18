@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:32:03 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 16:34:46 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 18:25:07 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	main()
 		if (input == "ADD" || input == "add")
 		{
 			book.add_contact();
+		}
+		else if (input == "SEARCH" || input == "search")
+		{
+			book.search();
 		}
 		else
 			std::cout << "Invalid option, please try again." << std::endl;

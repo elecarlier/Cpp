@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 20:42:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 16:43:23 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 18:59:06 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,29 @@
 
 PhoneBook::PhoneBook()
 {
-	std::cout << "PhoneBook constructor called" << std::endl;
+	//std::cout << "PhoneBook constructor called" << std::endl;
 	this->index = 0;
 	this->full = 0;
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "PhoneBook desconstructor called" << std::endl;
+	//std::cout << "PhoneBook desconstructor called" << std::endl;
 }
 
+void	PhoneBook::display(void)
+{
+	std::cout
+	<< std::setw(10) << std::right << "index" << '|'
+	<< std::setw(10) << std::right << "first name" << "|"
+	<< std::setw(10) << std::right << "last name" << "|"
+	<< std::setw(10) << std::right << "nickname" << "" << std::endl
+	<< std::setw(44) << std::setfill('-') << "" << std::setfill(' ') << "\n";
+		// for (int i = 0; i < 8; i++)
+		// {
 
+		// }
+}
 /*
 Save a new contact
 */
@@ -43,8 +55,10 @@ void	PhoneBook::add_contact(void)
 	this->contacts[index].setNumber(get_input("Phone number : "));
 	this->contacts[index].setDarkestSecret(get_input("Darkest secret : "));
 	index++;
+
 	if (index == 8)
 		full = 1;
+	std::cout << "\nContact successfully added.." << std::endl;
 }
 
 /*
@@ -61,7 +75,13 @@ contact information, one field per line
  */
 void	PhoneBook::search()
 {
-
+	display();
+	// if (this->full == 0 && this->index == 0)
+	// {
+	// 	std::cout << "Phonebook is empty. Please add contacts." << std::endl;
+	// 	return;
+	// }
+	//display();
 }
 
 void	PhoneBook::exit()

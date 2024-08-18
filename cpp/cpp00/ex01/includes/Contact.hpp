@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:26:53 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 15:49:23 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:59:35 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Contact
 		void	setDarkestSecret(const std::string &Dsecret);
 
 		// /* getters */
+		//void		display_contact(int index);
 		std::string getFirstName() const;
 		std::string getLastName() const;
 		std::string	getNickname() const;
