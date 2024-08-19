@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 11:18:09 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/09 11:53:42 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:00:49 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,5 @@ int main(int argc, char **argv)
 		std::cout << std::endl;
 
 	}
-
-
-
 	return (0);
 }
