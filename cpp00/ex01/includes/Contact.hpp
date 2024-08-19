@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:26:53 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/18 20:34:55 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:04:47 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 class Contact
 {
 	private:	//used only inside the class
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickName;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNumber;
+		std::string	_darkestSecret;
 
 	public: //can be used outside
 		Contact(); //constructor, automatically called when an object of a class is created
