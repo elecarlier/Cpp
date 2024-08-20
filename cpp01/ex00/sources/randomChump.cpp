@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 14:29:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 16:19:18 by ecarlier         ###   ########.fr       */
+/*   Created: 2024/08/20 14:32:18 by ecarlier          #+#    #+#             */
+/*   Updated: 2024/08/20 15:58:37 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#include "../includes/Zombie.hpp"
 
-int main(void)
+
+void randomChump( std::string name )
 {
-	Zombie *zombie_1;
-	//Zombie *zombie_2;
-	//Zombie *zombie_1;
+	Zombie	stackZombie(name);
 
-
-	zombie_1 = newZombie("Jean");
-	zombie_1->announce();
-
-	randomChump("Pierre");
-	delete zombie_1;
-
+	stackZombie.announce();
 }

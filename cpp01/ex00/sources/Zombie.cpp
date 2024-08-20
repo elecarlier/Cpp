@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 14:29:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 16:19:18 by ecarlier         ###   ########.fr       */
+/*   Created: 2024/08/20 14:32:21 by ecarlier          #+#    #+#             */
+/*   Updated: 2024/08/20 16:18:58 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+#include "../includes/Zombie.hpp"
 
-int main(void)
+Zombie::Zombie(std::string name)
 {
-	Zombie *zombie_1;
-	//Zombie *zombie_2;
-	//Zombie *zombie_1;
+	this->_name = name;
+	std::cout << "\033[33m" << this->_name << " constructor called" << "\033[0m" <<  std::endl;
+}
 
+Zombie::~Zombie()
+{
+	std::cout << "\033[32m" << this->_name << " desconstructor called" << "\033[0m"  << std::endl;
+}
 
-	zombie_1 = newZombie("Jean");
-	zombie_1->announce();
-
-	randomChump("Pierre");
-	delete zombie_1;
-
+void	Zombie::announce()
+{
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
