@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 17:10:27 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 19:01:03 by ecarlier         ###   ########.fr       */
+/*   Created: 2024/08/20 19:00:32 by ecarlier          #+#    #+#             */
+/*   Updated: 2024/08/20 19:49:49 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "../includes/Weapon.hpp"
 
-#include <string>
-#include <iostream>
-#include <sstream>
-
-
-class Zombie
+Weapon::Weapon(std::string type)
 {
-	private:
-		std::string	_name;
+	_type = type;
+	std::cout << "\033[33m" <<"Weapon constructor called" << "\033[0m" <<  std::endl;
+}
 
-	public:
+Weapon::~Weapon()
+{
+	std::cout << "\033[32m" <<"Weapon deconstructor called" << "\033[0m" <<  std::endl;
+}
 
-		Zombie();
-		~Zombie();
+const std::string&	Weapon::getType()
+{
+	return (this->_type);
+}
 
-		void	setName(const std::string &name);
-		void	announce(void);
-
-};
-
-Zombie* zombieHorde( int N, std::string name );
-
-#endif
+void	Weapon::setType(std::string type)
+{
+	this->_type = type;
+}

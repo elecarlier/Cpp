@@ -1,4 +1,4 @@
-NAME =
+NAME = fight
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
