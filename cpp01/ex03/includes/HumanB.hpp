@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:06:56 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 20:17:45 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:07:48 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class HumanB
 		~HumanB();
 
 		void	attack();
-		void	setWeapon(Weapon weapon);
+		void	setWeapon(Weapon &weapon);
 };
 
 #endif

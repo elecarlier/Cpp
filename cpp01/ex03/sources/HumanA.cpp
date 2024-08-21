@@ -6,14 +6,14 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:42:33 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 20:36:11 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:13:13 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/HumanA.hpp"
 
-HumanA::HumanA(std::string	name, Weapon weapon) : _name(name), _weapon(weapon)
+HumanA::HumanA(std::string	name, Weapon& weapon) : _name(name), _weapon(weapon)
 {
 	std::cout << "\033[33m" <<"HumanA constructor called" << "\033[0m" <<  std::endl;
 }

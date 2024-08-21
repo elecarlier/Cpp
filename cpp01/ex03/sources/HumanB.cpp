@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:42:35 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 20:23:17 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:07:58 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ HumanB::~HumanB()
 	std::cout << "\033[32m"<< "HumanB desconstructor called" << "\033[0m"  << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon weapon)
+void	HumanB::setWeapon(Weapon &weapon)
 {
 	this->_weapon = &weapon;
 }

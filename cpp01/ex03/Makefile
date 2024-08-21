@@ -1,4 +1,8 @@
-NAME = fight
+GREEN = \033[0;32m
+RESET = \033[0m
+
+
+NAME = unnecessaryViolence
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
@@ -11,6 +15,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "Linking the executable..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "$(GREEN)./$(NAME) is ready!$(RESET)"
 
 sources/%.o: sources/%.cpp includes/%.hpp
 	@echo "Compiling $<..."
