@@ -11,6 +11,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "Linking the executable..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "$(GREEN)./$(NAME) is ready!$(RESET)"
 
 sources/%.o: sources/%.cpp includes/%.hpp
 	@echo "Compiling $<..."
