@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:24:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/22 13:57:30 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:51:49 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,34 @@ Harl::Harl()
 
 Harl::~Harl()
 {
+
 	std::cout << "\033[32m" << "Harl desconstructor called" << "\033[0m"  << std::endl;
 }
 
 
 void Harl::debug( void )
 {
-	std::cout << "DEBUG : I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
+	std::cout << "[DEBUG]" << std::endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
 }
 
 void Harl::info( void )
 {
-	std::cout << "INFO : I cannot believe adding extra bacon costs more money. You didn t  put enough bacon in my burger! If you did, I would t be asking for more!" << std::endl;
+	std::cout << "[INFO]" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn t  put enough bacon in my burger! If you did, I would t be asking for more!" << std::endl;
 }
 
 
 void Harl::warning( void )
 {
-	std::cout << "WARNING : I think I deserve to have some extra bacon for free. I ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout << "[WARNING]" << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free. I ve been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void Harl::error( void )
 {
-	std::cout << "ERROR : This is unacceptable! I want to speak to the manager now." << std::endl;
+	std::cout << "[ERROR]" << std::endl;
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
 
@@ -52,6 +57,7 @@ void Harl::complain( std::string level )
 	void (Harl::*funcPtr[4])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 
 	int loglevel;
+	loglevel = 5;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -60,8 +66,6 @@ void Harl::complain( std::string level )
 			loglevel = i + 1;
 		}
 	}
-
-
 	switch (loglevel)
 	{
 		case 1:
@@ -73,6 +77,6 @@ void Harl::complain( std::string level )
 		case 4:
 			(this->*funcPtr[3])();
 		case 5:
-			std::cout << "[ Probably complaining about insignificant problems ]";
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }
