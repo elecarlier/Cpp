@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:24:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/22 16:35:05 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:36:55 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void Harl::complain( std::string level )
 		case 4:
 			(this->*funcPtr[3])();
 			break;
-		case 5:
+		case 5: //could be replace by default
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }
