@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/28 16:15:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:56:52 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ Fixed::Fixed()
 /* Not done */
 Fixed::Fixed(const int value)
 {
-	// this->_value = value;
+	this->_value = value << this->_bits;
 	std::cout << "\033[33m" << "Int constructor called" << "\033[0m" <<  std::endl;
 }
 /* Not done */
 Fixed::Fixed(const float value)
 {
-	// this->_value = value;
+	this->_value = roundf(value * (1 << this->_bits));
 	std::cout << "\033[33m" << "Float constructor called" << "\033[0m" <<  std::endl;
 }
 
@@ -44,7 +44,6 @@ Fixed::Fixed(const Fixed &copy)
 Fixed &Fixed::operator=(const Fixed &copy)
 {
 	std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
-
 	this->_value = copy.getRawBits();
 	return *this;
 }
@@ -57,22 +56,22 @@ std::ostream &operator<<(std::ostream &o, Fixed const &i)
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "\033[36m" << "getRawBits member function called" << "\033[0m" <<  std::endl;
+	///std::cout << "\033[36m" << "getRawBits member function called" << "\033[0m" <<  std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits( int const raw )
 {
-	std::cout << "\033[37m" << "setRawBits member function called" << "\033[0m" <<  std::endl;
+	//std::cout << "\033[37m" << "setRawBits member function called" << "\033[0m" <<  std::endl;
 	this->_value = raw;
 }
 
 float	Fixed::toFloat( void ) const
 {
-
+	return (static_cast<float>( this->getRawBits() ) / ( 1 << this->_bits ));
 }
 
 int		Fixed::toInt( void ) const
 {
-
+	return (this->getRawBits() >> this->_bits);
 }

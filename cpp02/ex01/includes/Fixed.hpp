@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:48 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/27 19:07:20 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:17:24 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
