@@ -1,7 +1,7 @@
 GREEN = \033[0;32m
 RESET = \033[0m
 
-NAME = zombies
+NAME = 
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes

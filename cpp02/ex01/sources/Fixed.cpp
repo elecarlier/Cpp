@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/27 18:59:17 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:15:38 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ Fixed::Fixed()
 	this->_value = 0;
 	std::cout << "\033[33m" << "Default constructor called" << "\033[0m" <<  std::endl;
 }
+
+/* Not done */
 Fixed::Fixed(const int value)
 {
 	// this->_value = value;
 	std::cout << "\033[33m" << "Int constructor called" << "\033[0m" <<  std::endl;
 }
-
+/* Not done */
 Fixed::Fixed(const float value)
 {
 	// this->_value = value;
@@ -45,7 +47,12 @@ Fixed &Fixed::operator=(const Fixed &copy)
 
 	this->_value = copy.getRawBits();
 	return *this;
+}
 
+std::ostream &operator<<(std::ostream &o, Fixed const &i)
+{
+	o << i.toFloat();
+	return (o);
 }
 
 int	Fixed::getRawBits( void ) const
@@ -58,4 +65,14 @@ void	Fixed::setRawBits( int const raw )
 {
 	std::cout << "\033[37m" << "setRawBits member function called" << "\033[0m" <<  std::endl;
 	this->_value = raw;
+}
+
+float	Fixed::toFloat( void ) const
+{
+
+}
+
+int		Fixed::toInt( void ) const
+{
+
 }
