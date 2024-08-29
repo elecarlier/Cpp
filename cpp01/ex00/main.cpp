@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 14:29:42 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/20 16:23:26 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:26:46 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ int main(void)
 
 	randomChump("Pierre");
 	delete zombie_1;
-
 }

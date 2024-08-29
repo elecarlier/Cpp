@@ -1,12 +1,12 @@
 GREEN = \033[0;32m
 RESET = \033[0m
 
-NAME = brain
+NAME = ex00
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
 
-SRCS =  main.cpp
+SRCS = $(wildcard sources/*.cpp) main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -15,6 +15,7 @@ $(NAME): $(OBJS)
 	@echo "Linking the executable..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo "$(GREEN)./$(NAME) is ready!$(RESET)"
+
 
 sources/%.o: sources/%.cpp includes/%.hpp
 	@echo "Compiling $<..."
