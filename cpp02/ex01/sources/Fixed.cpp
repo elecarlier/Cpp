@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/28 19:22:24 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:21:17 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ Fixed::Fixed()
 	std::cout << "\033[33m" << "Default constructor called" << "\033[0m" <<  std::endl;
 }
 
-
+/* Shifting the value by number of fractional bits to access int part*/
 Fixed::Fixed(const int value)
 {
 	this->_value = value << this->_bits;
 	std::cout << "\033[33m" << "Int constructor called" << "\033[0m" <<  std::endl;
 }
 
+/* multiplying the value by (2 ^ fractional bits) */
 Fixed::Fixed(const float value)
 {
 	this->_value = roundf(value * (1 << this->_bits));
@@ -39,7 +40,7 @@ Fixed::~Fixed()
 Fixed::Fixed(const Fixed &copy)
 {
 	std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
-	this->_value = copy.getRawBits();
+	*this = copy;
 }
 Fixed &Fixed::operator=(const Fixed &copy)
 {

@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/27 16:57:43 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:23:19 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ Fixed &Fixed::operator=(const Fixed &copy)
 	return *this;
 
 }
-
 
 int	Fixed::getRawBits( void ) const
 {

@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:48 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/28 18:17:24 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:08:35 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ class Fixed
 
 	public:
 		Fixed(); //default constructor
+		~Fixed(); //destructor
+
+		Fixed(const Fixed &copy);
 		Fixed(const int);
 		Fixed(const float);
-		~Fixed(); //destructor
-		Fixed(const Fixed &copy); //copy constructor
-		Fixed &operator=(const Fixed &copy); //overload operator
+
+		//overload operator
+		Fixed &operator=(const Fixed &copy);
 
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
