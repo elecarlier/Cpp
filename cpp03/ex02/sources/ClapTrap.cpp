@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:38:07 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/03 21:33:02 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/03 21:33:11 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 	this->_hitPoints = copy.getHitpoint();
 	return (*this);
 }
-
 void	ClapTrap::attack(const std::string& target)
 {
 	if (validEnergypoints(*this) && validHitpoints(*this))
@@ -79,6 +78,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	std::cout << this->getName() << " took " << amount <<  " points of damage! ";
 	std::cout << "\033[3m" << " [ Total of hit points left : " << this->_hitPoints << " ]" << "\033[0m" << std::endl;
 }
+
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
