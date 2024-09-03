@@ -6,20 +6,28 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/29 19:39:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:15:48 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ClapTrap.hpp"
-
+#include "includes/ScavTrap.hpp"
 
 int main(void)
 {
 	{
-		ClapTrap	a("Jean");
+		ScavTrap	a("Jean");
+		std::cout << a;
+		a.beRepaired(5);
 		std::cout << a;
 		a.attack("Target");
-		a.beRepaired(5);
+		std::cout << a;
+	}
+	std::cout << std::endl;
+	{
+		ScavTrap	a("Pierre");
+		std::cout << a;
+		a.takeDamage(150);
 		std::cout << a;
 		a.attack("Target");
 		a.beRepaired(5);
@@ -27,19 +35,12 @@ int main(void)
 	}
 	std::cout << std::endl;
 	{
-		ClapTrap	a("Pierre");
-		std::cout << a;
-		a.takeDamage(15);
-		std::cout << a;
-		a.attack("Target");
-		a.beRepaired(5);
-		std::cout << a;
-	}
-	std::cout << std::endl;
-	{
-		ClapTrap	a("Antoine");
-		ClapTrap	b(a);
-		ClapTrap	c = a;
+		ScavTrap	a("Anoine");
+		ScavTrap	b(a);
+		ScavTrap	c = a;
+		a.guardGate();
+		b.guardGate();
+		c.guardGate();
 		std::cout << a << b << c;
 	}
 }

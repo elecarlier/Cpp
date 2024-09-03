@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:32:41 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/02 17:04:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:47:48 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class ClapTrap
 
 	public:
 		ClapTrap(std::string name);
+		ClapTrap();
 		~ClapTrap();
 		ClapTrap(const ClapTrap &copy);
 		ClapTrap &operator=(const ClapTrap &copy);
@@ -45,6 +46,7 @@ class ClapTrap
 		std::string getName() const;
 
 };
+
 bool	validHitpoints(ClapTrap &claptrap);
 bool	validEnergypoints(ClapTrap &claptrap);
 std::ostream &operator<<(std::ostream &o, ClapTrap const &i);
