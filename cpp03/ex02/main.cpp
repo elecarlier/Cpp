@@ -6,10 +6,9 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:26:39 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/03 21:28:29 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/03 21:34:37 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "includes/ClapTrap.hpp"
 #include "includes/ScavTrap.hpp"
