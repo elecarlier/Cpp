@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/29 19:39:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:13:09 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ int main(void)
 	{
 		ClapTrap	a("Pierre");
 		std::cout << a;
-		a.takeDamage(15);
-		std::cout << a;
-		a.attack("Target");
-		a.beRepaired(5);
+		for (size_t i = 0; i < 11; i++)
+		{
+			a.attack("ClapTrap Anonymous");
+		}
 		std::cout << a;
 	}
 	std::cout << std::endl;
 	{
 		ClapTrap	a("Antoine");
-		ClapTrap	b(a);
+		ClapTrap	b(a); //creating a claptrap with copy constructor
 		ClapTrap	c = a;
 		std::cout << a << b << c;
 	}

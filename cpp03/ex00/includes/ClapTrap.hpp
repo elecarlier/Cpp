@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:32:41 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/08/29 19:29:45 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:04:53 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ClapTrap
 		int			_attackDamage;
 
 	public:
+		ClapTrap();
 		ClapTrap(std::string name);
 		~ClapTrap();
 		ClapTrap(const ClapTrap &copy);
