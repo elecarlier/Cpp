@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:23:26 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 18:28:08 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:41:05 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ ScavTrap::~ScavTrap()
 	<< "#ScavTrap :"
 	<< "Deconstructor called" << std::endl
 	<< this->getName() << " is dead!" << "\033[0m" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &copy)
+{
+	//std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
+	*this = copy;
+}
+ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
+{
+	//std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
+	this->_name = copy._name;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	this->_hitPoints = copy._hitPoints;
+	return (*this);
 }
 
 void	ScavTrap::attack(const std::string& target)

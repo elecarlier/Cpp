@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:23:26 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 20:18:33 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:40:57 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap(): ClapTrap()
 {
-	this->_name = "ScavTrap Anonymous";
+	this->_name = "FragTrap Anonymous";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
@@ -52,10 +52,10 @@ ScavTrap::ScavTrap(const ScavTrap &copy)
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
 {
 	//std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
-	this->_name = copy.getName();
-	this->_energyPoints = copy.getEnergypoint();
-	this->_attackDamage = copy.getAttackdamage();
-	this->_hitPoints = copy.getHitpoint();
+	this->_name = copy._name;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	this->_hitPoints = copy._hitPoints;
 	return (*this);
 }
 

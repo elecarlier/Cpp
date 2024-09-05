@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:26:39 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 18:00:11 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:26:40 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int main(void)
 		// for (int i = 0; i < 49; i++)
 		// 	a.attack("Target");
 		//std::cout << a;
-		a.beRepaired(5);
 		a.beRepaired(5);
 		a.attack("Target");
 		std::cout << a;

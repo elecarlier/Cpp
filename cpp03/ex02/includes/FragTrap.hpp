@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:17:28 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 18:28:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:40:13 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class FragTrap: public ClapTrap
 		FragTrap();
 		FragTrap(std::string name);
 		~FragTrap();
+		FragTrap(const FragTrap &copy);
+		FragTrap &operator=(const FragTrap &copy);
 
 		void highFivesGuys(void);
 };
