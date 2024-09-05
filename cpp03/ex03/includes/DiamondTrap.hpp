@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:41:59 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 18:26:24 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:05:33 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ class DiamondTrap: public FragTrap, public ScavTrap
 
 	public:
 		DiamondTrap(std::string name);
+		DiamondTrap();
+		DiamondTrap(const DiamondTrap &copy);
+
+		DiamondTrap &operator=(const DiamondTrap &copy);
+
 		~DiamondTrap();
 
 		void	whoAmI();
+		using	ScavTrap::attack;
 
 };
 

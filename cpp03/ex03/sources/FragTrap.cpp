@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:18:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 17:59:41 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:03:42 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,20 @@ FragTrap::~FragTrap()
 	//<< this->getName() << " is dead!" << "\033[0m" << std::endl;
 }
 
-// ScavTrap::ScavTrap(const ScavTrap &copy)
-// {
-// 	//std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
-// 	*this = copy;
-// }
-
+FragTrap::FragTrap(const FragTrap &copy)
+{
+	//std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
+	*this = copy;
+}
 FragTrap &FragTrap::operator=(const FragTrap &copy)
 {
+	//std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
 	this->_name = copy.getName();
 	this->_energyPoints = copy.getEnergypoint();
 	this->_attackDamage = copy.getAttackdamage();
 	this->_hitPoints = copy.getHitpoint();
 	return (*this);
 }
-
 
 void FragTrap::highFivesGuys(void)
 {

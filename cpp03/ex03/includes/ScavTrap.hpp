@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:23:24 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 18:27:04 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:11:34 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 /* Updating to virtual to avoid multiple instances of Claptrap */
 class ScavTrap: virtual public ClapTrap
 {
-	private:
-
+	protected:
+			static const int _energy = 50;
 	public:
 		ScavTrap();
 		ScavTrap(std::string name);
-		~ScavTrap();
+		ScavTrap(const ScavTrap &copy);
+		ScavTrap &operator=(const ScavTrap &copy);
+		virtual ~ScavTrap();
 
 		void attack(const std::string& target); //overwriting
 		void guardGate();
-
-
 };
 
 #endif

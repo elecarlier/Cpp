@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:32:41 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/03 17:47:48 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:48:32 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class ClapTrap
 	public:
 		ClapTrap(std::string name);
 		ClapTrap();
-		~ClapTrap();
+		virtual ~ClapTrap();
 		ClapTrap(const ClapTrap &copy);
 		ClapTrap &operator=(const ClapTrap &copy);
 

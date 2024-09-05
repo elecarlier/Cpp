@@ -6,24 +6,53 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:41:39 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 17:59:55 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:15:23 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) :  ClapTrap(name + "_clap_name"), FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap()
+{
+	this->_hitPoints = FragTrap::_hit;
+	this->_energyPoints = ScavTrap::_energy;
+	this->_attackDamage = FragTrap::_damage;
+
+	std::cout << "\033[36m"
+	<< "#DiamondTrap : "
+	<< "Default constructor called" << std::endl
+	<< this->getName() << " has been created!" <<  "\033[0m" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(std::string name) :  ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name)
 {
 	this->_name = name;
-	FragTrap::setHitpoint(100);
-	ScavTrap::setEnergypoint(50);
-	FragTrap::setAttackdamage(30);
+	this->_hitPoints = FragTrap::_hit;
+	this->_energyPoints = ScavTrap::_energy;
+	this->_attackDamage = FragTrap::_damage;
+
 	std::cout << "\033[36m"
 	<< "#DiamondTrap : "
 	<< "Constructor called" << std::endl
 	<< this->getName() << " has been created!" <<  "\033[0m" << std::endl;
+}
 
+DiamondTrap::DiamondTrap(const DiamondTrap &copy)
+{
+	//std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
+	*this = copy;
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
+{
+	//std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
+	this->ClapTrap::_name = copy.ClapTrap::_name;
+	this->_name = copy.getName();
+	this->_energyPoints = copy.getEnergypoint();
+	this->_attackDamage = copy.getAttackdamage();
+	this->_hitPoints = copy.getHitpoint();
+	return (*this);
 }
 
 DiamondTrap::~DiamondTrap()
