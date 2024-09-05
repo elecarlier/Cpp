@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:41:59 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 17:37:42 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:26:24 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class DiamondTrap: public FragTrap, public ScavTrap
 		std::string	_name; //diff than ClapTrap's name
 
 	public:
-		//DiamondTrap();
 		DiamondTrap(std::string name);
 		~DiamondTrap();
 

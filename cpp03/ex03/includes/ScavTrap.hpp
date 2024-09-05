@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:23:24 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 15:45:57 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:27:04 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class ScavTrap: virtual public ClapTrap
 		ScavTrap();
 		ScavTrap(std::string name);
 		~ScavTrap();
-	//	ScavTrap(const ScavTrap &copy);
-		ScavTrap &operator=(const ScavTrap &copy);
 
 		void attack(const std::string& target); //overwriting
 		void guardGate();
