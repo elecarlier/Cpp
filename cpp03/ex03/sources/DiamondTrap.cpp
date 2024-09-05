@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:41:39 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 20:15:23 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:25:39 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 {
 	//std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
 	this->ClapTrap::_name = copy.ClapTrap::_name;
-	this->_name = copy.getName();
-	this->_energyPoints = copy.getEnergypoint();
-	this->_attackDamage = copy.getAttackdamage();
-	this->_hitPoints = copy.getHitpoint();
+	this->_name = copy._name;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	this->_hitPoints = copy._hitPoints;
 	return (*this);
 }
 

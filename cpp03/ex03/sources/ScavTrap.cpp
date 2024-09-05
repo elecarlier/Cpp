@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:23:26 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 20:04:40 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:18:33 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ScavTrap::ScavTrap(): ClapTrap()
 {
+	this->_name = "ScavTrap Anonymous";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
@@ -25,7 +26,7 @@ ScavTrap::ScavTrap(): ClapTrap()
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	this->_name = name;
+	// this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;

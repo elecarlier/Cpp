@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:18:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 20:03:42 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:18:07 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 FragTrap::FragTrap(): ClapTrap()
 {
+	this->_name = "FragTrap Anonymous";
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
@@ -26,7 +27,7 @@ FragTrap::FragTrap(): ClapTrap()
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	this->_name = name;
+	// this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
