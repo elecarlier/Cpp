@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/03 18:15:48 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:20:52 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(void)
 	}
 	std::cout << std::endl;
 	{
-		ScavTrap	a("Anoine");
+		ScavTrap	a("Antoine");
 		ScavTrap	b(a);
 		ScavTrap	c = a;
 		a.guardGate();
