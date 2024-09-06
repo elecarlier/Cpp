@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:41 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 17:13:34 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:30:54 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class Cat : public Animal
 {
 	private:
+		Brain	*_brain;
 
 	public:
 		Cat();
