@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 21:51:17 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:41:53 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat()
 	this->_type = "Cat";
 	std::cout << "\033[32m"
 	<< "#Cat :"
-	<< "Default Constructor called" << std::endl;
+	<< "Default Constructor called" <<  "\033[0m"  << std::endl;
 }
 
 
@@ -26,7 +26,7 @@ Cat::~Cat()
 {
 	std::cout << "\033[32m"
 	<< "#Cat :"
-	<< " Deconstructor called" << std::endl;
+	<< " Deconstructor called" <<  "\033[0m" << std::endl;
 }
 
 Cat::Cat(const Cat &copy)

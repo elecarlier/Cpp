@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:44 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/05 21:43:35 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:43:27 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Animal::Animal(std::string type)
 	this->_type = type;
 	std::cout << "\033[33m"
 	<< "#Animal :"
-	<< " Constructor called" << std::endl;
+	<< " Constructor called" <<  "\033[0m" << std::endl;
 
 }
 
@@ -33,7 +33,7 @@ Animal::~Animal()
 {
 	std::cout << "\033[33m"
 	<< "#Animal :"
-	<< " Deconstructor called" << std::endl;
+	<< " Deconstructor called" <<  "\033[0m" << std::endl;
 }
 
 Animal::Animal(const Animal &copy)
@@ -51,7 +51,7 @@ Animal &Animal::operator=(const Animal &copy)
 
 void	Animal::makeSound() const
 {
-	std::cout << "Animal sound" << std::endl;
+	std::cout <<  "\033[33m" << "Animal sound" << "\033[0m" <<  std::endl;
 }
 
 
