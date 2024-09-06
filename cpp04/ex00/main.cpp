@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 16:56:24 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:07:27 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,10 @@ int	main (void)
 {
 	{
 		const Animal* meta = new Animal();
-		const WrongAnimal* wrongMeta = new WrongAnimal();
 		const Animal* i = new Cat();
 		const Animal* j = new Dog();
-		const WrongAnimal* k = new WrongCat();
 
 		std::cout << std::endl;
-
 		std::cout << meta->getType() << ": ";
 		meta->makeSound();
 		std::cout << i->getType() << ": ";
@@ -35,17 +32,26 @@ int	main (void)
 		std::cout << j->getType() << ": ";
 		j->makeSound();
 
-		std::cout << wrongMeta->getType() << ": ";
-		wrongMeta->makeSound();
-		std::cout << k->getType() << ": ";
-		k->makeSound();
 
 		std::cout << std::endl;
 
 		delete(meta);
-		delete(wrongMeta);
 		delete(i);
 		delete(j);
+	}
+	{
+		std::cout << std::endl;
+		const WrongAnimal* wrongMeta = new WrongAnimal();
+		const WrongAnimal* k = new WrongCat();
+
+		std::cout << std::endl;
+		std::cout << wrongMeta->getType() << ": ";
+		wrongMeta->makeSound();
+		std::cout << k->getType() << ": ";
+		k->makeSound();
+		std::cout << std::endl;
+
+		delete(wrongMeta);
 		delete(k);
 	}
 
