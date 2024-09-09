@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:50:17 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 16:54:04 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:36:44 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	WrongAnimal::makeSound() const
 {
 	std::cout <<  "\033[33m" << "WrongAnimal sound" << "\033[0m" <<  std::endl;
 }
-
 
 void	WrongAnimal::setType(std::string type)
 {

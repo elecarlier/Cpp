@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:43 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 15:57:42 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:30:32 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ Dog::Dog()
 	std::cout << "\033[35m"
 	<< "#Dog :"
 	<< "Default Constructor called" <<  "\033[0m" << std::endl;
+}
+
+Dog::Dog(std::string const type) : Animal(type)
+{
+	this->_type = type;
+	this->_brain = new Brain();
+	std::cout << "\033[35m"
+	<< "#Dog :"
+	<< "Parametric constructor called" << std::endl;
 }
 
 Dog::~Dog()

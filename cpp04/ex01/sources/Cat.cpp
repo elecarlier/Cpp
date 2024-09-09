@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 15:56:05 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:27:47 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ Cat::Cat()
 	<< "Default Constructor called" <<  "\033[0m"  << std::endl;
 }
 
+
+Cat::Cat(std::string const type) : Animal(type)
+{
+	this->_type = type;
+	this->_brain = new Brain();
+	std::cout << "\033[32m"
+	<< "#Cat :"
+	 << "Parametric constructor called" <<  "\033[0m" << std::endl;
+}
 
 Cat::~Cat()
 {
