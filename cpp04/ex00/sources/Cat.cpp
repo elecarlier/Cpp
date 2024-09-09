@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 15:52:19 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:19:04 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ Cat::Cat()
 	<< "Default Constructor called" <<  "\033[0m"  << std::endl;
 }
 
+Cat::Cat(std::string const type) : Animal(type)
+{
+	this->_type = type;
+	std::cout << "\033[32m"
+	<< "#Cat :"
+	<< "Cat parametric constructor called" <<  "\033[0m" << std::endl;
+}
 
 Cat::~Cat()
 {
@@ -33,12 +40,12 @@ Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	if (this != &copy)
 		*this = copy;
-	std::cout << "\033[32m" << "Copy constructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[32m" << "Cat copy constructor called" << "\033[0m" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &copy)
 {
-	std::cout << "\033[32m" << "Copy assignment operator called" << "\033[0m" << std::endl;
+	std::cout << "\033[32m" << "Cat assignation operator called" << "\033[0m" << std::endl;
 
 	this->_type = copy._type;
 	return (*this);
