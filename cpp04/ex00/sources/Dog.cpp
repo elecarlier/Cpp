@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:43 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 18:21:07 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:25:29 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Dog::~Dog()
 	<< "#Dog :"
 	<< " Deconstructor called" <<  "\033[0m"  << std::endl;
 }
+
 Dog::Dog(std::string const type) : Animal(type)
 {
 	this->_type = type;
