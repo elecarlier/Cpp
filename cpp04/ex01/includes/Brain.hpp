@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:13:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 17:29:10 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:28:08 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ class Brain
 
 	public:
 		Brain();
-		Brain(std::string type);
 		Brain(const Brain &copy);
 		Brain &operator=(const Brain &copy);
-		 ~Brain();
+		~Brain();
 
-		 void			setIdeas(int i, std::string idea);
+		void			setIdeas(int i, std::string idea);
 		std::string		getIdeas(int i) const;
 };
 

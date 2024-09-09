@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:13:09 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 17:29:54 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:28:32 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,10 @@ Brain::Brain()
 	<< "Default Constructor called" << std::endl;
 }
 
-Brain::Brain(std::string type)
-{
-	std::cout << "\033[33m"
-	<< "#Brain :"
-	<< " Constructor called" <<  "\033[0m" << std::endl;
-
-}
-
 Brain::~Brain()
 {
 	std::cout << "\033[33m"
-	<< "#Animal :"
+	<< "#Brain :"
 	<< " Deconstructor called" <<  "\033[0m" << std::endl;
 }
 

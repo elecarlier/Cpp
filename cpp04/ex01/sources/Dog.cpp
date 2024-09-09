@@ -6,14 +6,15 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:43 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 16:42:29 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:57:42 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog(): Animal()
+Dog::Dog()
 {
+	this->_brain = new Brain();
 	this->_type = "Dog";
 	std::cout << "\033[35m"
 	<< "#Dog :"
@@ -22,21 +23,28 @@ Dog::Dog(): Animal()
 
 Dog::~Dog()
 {
+	delete this->_brain;
 	std::cout << "\033[35m"
 	<< "#Dog :"
 	<< " Deconstructor called" <<  "\033[0m"  << std::endl;
 }
 
-Dog::Dog(const Dog &copy)
+Dog::Dog(const Dog &copy) : Animal(copy)
 {
-	std::cout << "\033[35m" << "Copy constructor called" << "\033[0m" << std::endl;
-	*this = copy;
+	if (this != &copy)
+	{
+		this->_type = copy._type;
+		this->_brain = new Brain(*(copy._brain));
+	}
+	std::cout << "\033[35m" << "Dog copy constructor called" << "\033[0m" << std::endl;
+
 }
 
 Dog &Dog::operator=(const Dog &copy)
 {
-	std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
+	std::cout << "\033[35m" <<  "Dog assignation operator called"<< "\033[0m" << std::endl;
 	this->_type = copy._type;
+	this->_brain = copy._brain;
 	return (*this);
 }
 

@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 21:11:41 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 18:29:48 by ecarlier         ###   ########.fr       */
+/*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
+/*   Updated: 2024/09/05 18:13:31 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#include "includes/"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
 
-class Cat : public Animal
+int main(void)
 {
-	private:
-		Brain	*_brain;
 
-	public:
-		Cat();
-		Cat(const Cat &copy);
-		Cat &operator=(const Cat &copy);
-		virtual ~Cat();
-
-		virtual void	makeSound() const; //does not need to be virtual but good to remember they are special
-};
-
-
-#endif
+}

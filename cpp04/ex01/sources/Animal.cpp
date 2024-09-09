@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:44 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 16:43:27 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:54:51 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Animal::~Animal()
 
 Animal::Animal(const Animal &copy)
 {
-	std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[34m" << "Animal copy constructor called" << "\033[0m" << std::endl;
 	*this = copy;
 }
 

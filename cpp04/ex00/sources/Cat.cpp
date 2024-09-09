@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/06 16:41:53 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:52:19 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,17 @@ Cat::~Cat()
 	<< " Deconstructor called" <<  "\033[0m" << std::endl;
 }
 
-Cat::Cat(const Cat &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
+	if (this != &copy)
+		*this = copy;
 	std::cout << "\033[32m" << "Copy constructor called" << "\033[0m" << std::endl;
-	*this = copy;
 }
 
 Cat &Cat::operator=(const Cat &copy)
 {
 	std::cout << "\033[32m" << "Copy assignment operator called" << "\033[0m" << std::endl;
+
 	this->_type = copy._type;
 	return (*this);
 }
