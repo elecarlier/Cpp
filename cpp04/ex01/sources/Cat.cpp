@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:51 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 18:27:47 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:04:56 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Cat::~Cat()
 	<< " Deconstructor called" <<  "\033[0m" << std::endl;
 }
 
-/* Directly calling Copy constructir from parent's class */
+/* Directly calling Copy constructor from parent's class */
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	if (this != &copy)
@@ -55,9 +55,14 @@ Cat::Cat(const Cat &copy) : Animal(copy)
 Cat &Cat::operator=(const Cat &copy)
 {
 	std::cout << "\033[32m" << "Cat assignation operator called" << "\033[0m" << std::endl;
-	this->_type = copy._type;
-	this->_brain = copy._brain;
-	return (*this);
+	if (this != &copy)  // Avoid self-assignment
+	{
+		delete this->_brain;
+		this->_brain = new Brain(*(copy._brain));  // Deep copy of the Brain
+		this->_type = copy._type;
+	}
+
+	return *this;
 }
 
 void	Cat::makeSound() const

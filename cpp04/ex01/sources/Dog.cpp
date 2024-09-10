@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 21:11:43 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 18:30:32 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:13:42 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,14 @@ Dog::Dog(const Dog &copy) : Animal(copy)
 Dog &Dog::operator=(const Dog &copy)
 {
 	std::cout << "\033[35m" <<  "Dog assignation operator called"<< "\033[0m" << std::endl;
-	this->_type = copy._type;
-	this->_brain = copy._brain;
-	return (*this);
+	if (this != &copy)  // Avoid self-assignment
+	{
+		delete this->_brain;
+		this->_brain = new Brain(*(copy._brain));  // Deep copy of the Brain
+		this->_type = copy._type;
+	}
+
+	return *this;
 }
 
 void	Dog::makeSound() const

@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/09 19:04:32 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:18:09 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ int	main (void)
 		const Animal* bagheera = new Cat();
 		const WrongAnimal* wrongMeta = new WrongAnimal();
 		const WrongAnimal* k = new WrongCat();
-		// const Cat* garfield = new Cat();
-		// const Dog* marty = new Dog();
 
 		std::cout << std::endl;
 
 		std::cout << scooby->getType() << " ";
 		scooby->makeSound();
 		std::cout << bagheera->getType() << " ";
-		bagheera->makeSound(); //will output the cat sound!
+		bagheera->makeSound();
 		std::cout << meta->getType() << " ";
 		meta->makeSound();
 		std::cout << std::endl;
@@ -44,8 +42,44 @@ int	main (void)
 		k->makeSound();
 		std::cout << std::endl;
 
+		delete(meta);
+		delete(scooby);
+		delete(bagheera);
+		delete(wrongMeta);
+		delete(k);
 	}
 	{
+		std::cout << std::endl;
+		std::cout << "\033[1;0mCreating an array of animals\033[0m" << std::endl;
+		Animal*	array[4];
+		for (int i = 0; i < 2; i++)
+			array[i] = new Cat();
+		for (int i = 2; i < 4; i++)
+			array[i] = new Dog();
+
+		std::cout << std::endl;
+		std::cout << "\033[1;0mChecking the array\033[0m" << std::endl;
+		for (size_t i = 0; i < 4; i++)
+		{
+			array[i]->getType();
+			array[i]->makeSound();
+		}
+
+/* Checking deep copies -> we need to ensure that the brain member object is copied, not just the pointer
+	-> a new brain object must be created and not the just the pointer */
+		std::cout << std::endl;
+		std::cout << "\033[1;0mChecking that copies are deep copies\033[0m" << std::endl;
+
+		Dog	basic;
+		{
+			Dog	tmp = basic;
+		}
+
+		std::cout << std::endl << "\033[1;0mProperly deleting\033[0m" << std::endl;
+		for (size_t i = 0; i < 4; i++) {
+			delete array[i];
+			std::cout << std::endl;
+		}
 
 	}
 
