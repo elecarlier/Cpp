@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/10 16:52:12 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:35:50 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main( void )
 
 		std::cout << std::endl;
 		std::cout << "\033[1;0mCreating an array of animals\033[0m" << std::endl;
-		AAnimal*	array[4]; //cannot instantiate an AAnimal object directly but can store pointers to objetcs of derived classes 
+		AAnimal*	array[4]; //cannot instantiate an AAnimal object directly but can store pointers to objetcs of derived classes
 		for (int i = 0; i < 2; i++)
 			array[i] = new Cat();
 		for (int i = 2; i < 4; i++)
@@ -52,7 +52,8 @@ int	main( void )
 
 	}
 
-	//AAnimal *animal = new AAnimal();  // ERREUR : instanciation d'une classe abstraite
+
+	// AAnimal *animal = new AAnimal();
 
 
 	// {

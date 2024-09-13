@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/10 14:18:09 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:21:36 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	main (void)
 			array[i]->makeSound();
 		}
 
-/* Checking deep copies -> we need to ensure that the brain member object is copied, not just the pointer
-	-> a new brain object must be created and not the just the pointer */
+		/* Checking deep copies -> we need to ensure that the brain member object is copied, not just the pointer
+		-> a new brain object must be created and not the just the pointer */
 		std::cout << std::endl;
 		std::cout << "\033[1;0mChecking that copies are deep copies\033[0m" << std::endl;
 
