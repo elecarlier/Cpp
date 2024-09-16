@@ -6,30 +6,36 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:29:17 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/16 16:00:19 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:28:54 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Default Bureaucrat"), _grade(150)
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
-	std::cout << "\033[33m"
-	<< "Bureaucrat Default Constructor with minimum grade called" << std::endl;
+	std::cout << "\033[34m"
+	<< "Bureaucrat Default Constructor with minimum grade called" <<  "\033[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	this->_grade = grade;
-	std::cout << "\033[33m"
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade = grade;
+
+	std::cout << "\033[34m"
 	<< "Bureaucrat Constructor called" <<  "\033[0m" << std::endl;
 
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "\033[33m"
-	<< "Bureaucrat Deconstructor called" <<  "\033[0m" << std::endl;
+	std::cout << "\033[34m"
+	<< "Bureaucrat Deconstructor called\n" <<  "\033[0m" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
@@ -38,14 +44,35 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 	*this = copy;
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
+/*--------------- Methods ---------------*/
+
+void Bureaucrat::incrementGrade()
 {
-	std::cout << "\033[35m" << "Bureaucrat Copy assignment operator called" << "\033[0m" << std::endl;
-	// this->_name = copy._name;
-	// this->_grade = copy._grade;
-	return (*this);
+	if (this->_grade == 1)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		this->_grade--;
 }
 
+void Bureaucrat::decrementGrade()
+{
+	if (this->_grade == 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade++;
+}
+
+/* --------------- Expections handling --------------- */
+
+const char* Bureaucrat::GradeTooHighException::what() const throw ()
+{
+	return ("Trowing exception : grade too high");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw ()
+{
+	return ("Trowing exception : grade too low");
+}
 
 /* --------------- Getters --------------- */
 int	Bureaucrat::getGrade() const
@@ -58,9 +85,21 @@ std::string	Bureaucrat::getName() const
 	return (this->_name);
 }
 
-/*--------------- Overload of << ---------------*/
+/*--------------- Overload ---------------*/
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
+{
+	std::cout << "\033[35m" << "Bureaucrat Copy assignment operator called" << "\033[0m" << std::endl;
+	if (this != &copy)
+	{
+		this->_grade = copy.getGrade();
+	}
+	return (*this);
+}
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &i)
 {
+
 	o << i.getName() << ", bureaucrat grade " << i.getGrade() << std::endl;
+	return (o);
 }
