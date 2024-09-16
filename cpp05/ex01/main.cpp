@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/16 20:08:32 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/16 20:09:25 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,55 +115,6 @@ int	main (void)
 	{
 		std::cerr << e.what() << '\n'<< std::endl;
 	}
-
-
-
-	// std::cout  << "\033[1m" << " --- Test 0 : w ---" << "\033[0m" <<std::endl <<std::endl;
-	// try
-	// {
-	// 	Bureaucrat Agatha("Agatha", 42);
-	// 	Form form("Murder on the Orient Express", 50, 40);
-	// 	std::cout << Agatha << std::endl;
-	// 	std::cout << form << std::endl;
-
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n' << std::endl;
-	// }
-
-	// std::cout  << "\033[1m" << " --- Test 5 : incrementGrade() too high---" << "\033[0m" <<std::endl <<std::endl;
-
-	// try
-	// {
-
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n' << std::endl;
-	// }
-
-	// std::cout  << "\033[1m" << " --- Test 6 : decrementGrade() ---" << "\033[0m" <<std::endl <<std::endl;
-
-	// try
-	// {
-
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n' << std::endl;
-	// }
-
-	// std::cout << "\033[1m" << " --- Test 7 : decrementGrade() too low---" << "\033[0m" <<std::endl <<std::endl;
-
-	// try
-	// {
-
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n' << std::endl;
-	// }
 
 	return (0);
 }
