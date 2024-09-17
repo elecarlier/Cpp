@@ -69,7 +69,6 @@ class AForm
 		int				getEGrade() const;
 		std::string		getName() const;
 
-
 };
 
 std::ostream &operator<<(std::ostream &o, AForm const &i);
