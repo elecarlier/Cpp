@@ -58,6 +58,12 @@ class AForm
 				virtual const char* what() const throw ();
 		};
 
+		class NotSignedException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw ();
+		};
+
 		bool			getSigned() const;
 		int				getSGrade() const;
 		int				getEGrade() const;

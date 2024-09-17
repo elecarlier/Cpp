@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:59:20 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/17 17:26:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:54:09 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm
@@ -30,13 +32,8 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(std::string target);
 
 		void execute(Bureaucrat const & executor) const;
-		
-		std::string getTarget() const;
 
-		// class CustomException : public std::exception {
-		// public:
-		// 	virtual const char* what() const throw();
-		// };
+		std::string getTarget() const;
 };
 
 std::ostream &operator<<(std::ostream &o, RobotomyRequestForm const &i);

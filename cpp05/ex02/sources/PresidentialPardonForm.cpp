@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:52:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/17 17:27:00 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:36:54 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,24 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 }
 
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	AForm::execute(executor);
+
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+
+}
 
 std::string PresidentialPardonForm::getTarget() const
 {
 	return (this->_target);
+}
+
+std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm const &i)
+{
+	o << i.getName() << std::endl
+	<< ", grade required to sign : " << i.getSGrade() << std::endl
+	<< ", grade required to execute : " << i.getEGrade() << std::endl
+	<< ", signed status : " << (i.getSigned() ? "Signed" : "Not Signed") << std::endl;
+	return (o);
 }

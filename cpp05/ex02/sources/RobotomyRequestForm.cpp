@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:43:43 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/17 17:27:14 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:57:45 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,30 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &c
 	return *this;
 }
 
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	AForm::execute(executor);
+	std::cout << "Making some drilling noises....\n" ;
+
+	std::srand(std::time(NULL));
+	int success = std::rand() % 2;
+	if (success)
+		std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << this->getTarget() << " has not been robotomized successfully" << std::endl;
+
+}
 
 std::string RobotomyRequestForm::getTarget() const
 {
 	return (this->_target);
+}
+
+std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm const &i)
+{
+	o << i.getName() << std::endl
+	<< ", grade required to sign : " << i.getSGrade() << std::endl
+	<< ", grade required to execute : " << i.getEGrade() << std::endl
+	<< ", signed status : " << (i.getSigned() ? "Signed" : "Not Signed") << std::endl;
+	return (o);
 }

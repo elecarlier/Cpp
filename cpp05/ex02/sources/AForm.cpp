@@ -59,6 +59,15 @@ void	AForm::beSigned(Bureaucrat bureaucrat)
 		this->_signed = true;
 }
 
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (!_signed)
+		throw AForm::NotSignedException();
+	if (executor.getGrade() > this->_E_grade )
+		throw AForm::GradeTooLowException();
+}
+
+
 /* --------------- Expections handling --------------- */
 
 const char* AForm::GradeTooHighException::what() const throw ()
@@ -76,6 +85,10 @@ const char* AForm::AlreadySignedException::what() const throw ()
 	return ("Trowing exception : Form already signed");
 }
 
+const char* AForm::NotSignedException::what() const throw ()
+{
+	return ("Trowing exception : Form is not signed");
+}
 /* --------------- Getters --------------- */
 
 int		AForm::getSGrade() const

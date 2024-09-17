@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:20:44 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/17 13:01:56 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:24:59 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat
 		void signForm(AForm & AForm);
 		void incrementGrade();
 		void decrementGrade();
+		void executeForm(AForm const & form);
 
 		class GradeTooHighException : public std::exception
 		{

@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:29:17 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/17 13:03:18 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:48:06 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
-	std::cout << "\033[34m"
-	<< "Bureaucrat Default Constructor with minimum grade called" <<  "\033[0m" << std::endl;
+	//std::cout << "\033[34m"
+	//<< "Bureaucrat Default Constructor with minimum grade called" <<  "\033[0m" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
@@ -27,15 +27,15 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	else
 		this->_grade = grade;
 
-	std::cout << "\033[34m"
-	<< "Bureaucrat Constructor called" <<  "\033[0m" << std::endl;
+	//std::cout << "\033[34m"
+	//<< "Bureaucrat Constructor called" <<  "\033[0m" << std::endl;
 
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "\033[34m"
-	<< "Bureaucrat Deconstructor called\n" <<  "\033[0m" << std::endl;
+	//std::cout << "\033[34m"
+	//<< "Bureaucrat Deconstructor called" <<  "\033[0m" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
@@ -78,7 +78,19 @@ void Bureaucrat::signForm(AForm & AForm)
 			std::cout << this->getName() << " couldn’t sign " << AForm.getName() << " because his/her grade is too low"  << std::endl;
 		}
 	}
+}
 
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << "\n" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 }
 

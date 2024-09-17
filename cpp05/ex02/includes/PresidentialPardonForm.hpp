@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:59:21 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/17 17:26:45 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:54:06 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,8 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(std::string target);
 
 		void execute(Bureaucrat const & executor) const;
-		
-		std::string getTarget() const;
 
-		// class CustomException : public std::exception
-		// {
-		// 	public:
-		// 		virtual const char* what() const throw();
-		// };
+		std::string getTarget() const;
 };
 
 std::ostream &operator<<(std::ostream &o, PresidentialPardonForm const &i);
