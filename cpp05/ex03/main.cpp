@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/20 13:01:37 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:11:57 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ int main()
 {
 	std::cout << "\033[1m" << "\n --- RobotomyRequestForm  ---" << "\033[0m" <<std::endl<<std::endl;
 
+	Bureaucrat Bob("Bob", 1);
+	Intern someRandomIntern;
+
 	try
 	{
-		Intern someRandomIntern;
+
 		AForm *rrf;
 		AForm *RRF;
 
@@ -33,6 +36,7 @@ int main()
 		RRF = someRandomIntern.makeForm("ROBOTOMY REQUEST", "bender");
 		std::cout << *RRF << std::endl;
 
+		Bob.signForm(*rrf);
 		delete rrf;
 		delete RRF;
 
@@ -46,7 +50,6 @@ int main()
 	std::cout << "\033[1m" << "\n --- ShrubberyCreationForm  ---" << "\033[0m" <<std::endl<<std::endl;
 	try
 	{
-		Intern someRandomIntern;
 		AForm *scf;
 
 		scf = someRandomIntern.makeForm("Shrubbery Creation", "bender");
@@ -62,11 +65,11 @@ int main()
 
 	try
 	{
-		Intern someRandomIntern;
 		AForm *ppf;
 
 		ppf = someRandomIntern.makeForm("Presidential Pardon", "bender");
 		std::cout << *ppf << std::endl;
+
 		delete ppf;
 
 	}
@@ -79,7 +82,6 @@ int main()
 
 	try
 	{
-		Intern someRandomIntern;
 		AForm *ppf;
 
 		ppf = someRandomIntern.makeForm("invalid form", "bender");
