@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:32:57 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/20 12:24:55 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:01:37 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int main()
 
 		RRF = someRandomIntern.makeForm("ROBOTOMY REQUEST", "bender");
 		std::cout << *RRF << std::endl;
+
+		delete rrf;
+		delete RRF;
+
 	}
 	catch(const std::exception& e)
 	{
@@ -40,8 +44,53 @@ int main()
 
 
 	std::cout << "\033[1m" << "\n --- ShrubberyCreationForm  ---" << "\033[0m" <<std::endl<<std::endl;
+	try
+	{
+		Intern someRandomIntern;
+		AForm *scf;
+
+		scf = someRandomIntern.makeForm("Shrubbery Creation", "bender");
+		std::cout << *scf << std::endl;
+		delete scf;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n'<< std::endl;
+	}
 
 	std::cout << "\033[1m" << "\n --- PresidentialPardonForm  ---" << "\033[0m" <<std::endl<<std::endl;
+
+	try
+	{
+		Intern someRandomIntern;
+		AForm *ppf;
+
+		ppf = someRandomIntern.makeForm("Presidential Pardon", "bender");
+		std::cout << *ppf << std::endl;
+		delete ppf;
+
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n'<< std::endl;
+	}
+
+	std::cout << "\033[1m" << "\n --- Invalid name  ---" << "\033[0m" <<std::endl<<std::endl;
+
+	try
+	{
+		Intern someRandomIntern;
+		AForm *ppf;
+
+		ppf = someRandomIntern.makeForm("invalid form", "bender");
+		std::cout << *ppf << std::endl;
+		delete ppf;
+
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n'<< std::endl;
+	}
 
 	return (0);
 }

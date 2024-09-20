@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 10:35:33 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/20 12:19:43 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:58:14 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Intern::Intern()
 {
-	std::cout << "\033[33m" << "Default constructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[33m" << "Intern Default constructor called" << "\033[0m" << std::endl;
 }
 
 Intern::~Intern()
 {
-	std::cout << "\033[32m" << "Destructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[32m" << "Intern Destructor called" << "\033[0m" << std::endl;
 }
 
 Intern::Intern(const Intern &copy)
 {
-	std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
+	std::cout << "\033[34m" << "Intern Copy constructor called" << "\033[0m" << std::endl;
 	*this = copy;
 }
 
