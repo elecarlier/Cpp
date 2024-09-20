@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:39:44 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/16 19:45:16 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:38:06 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ class Form
 		bool				_signed;
 		int const			_S_grade;
 		int const			_E_grade;
-
-
 
 	public:
 		Form();
