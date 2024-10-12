@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:04:38 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/24 19:19:36 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:52:34 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <regex.h>
 
 
 enum e_type
@@ -31,6 +32,7 @@ enum e_type
 	NANF,
 	NAND,
 	ERROR,
+	UNDEFINNED,
 };
 
 class ScalarConverter
@@ -41,16 +43,25 @@ class ScalarConverter
 		~ScalarConverter();
 		ScalarConverter &operator=(const ScalarConverter &copy);
 
-		static int	getType(const std::string &str);
 
-		static void	display(char c);
-		static void	display(int i);
-		static void	display(float f);
-		static void	display(double d);
+		static bool		checkRegex(const std::string str, const std::string pattern);
+
+		static bool	isNull(const std::string str);
+		static void	convertChar(const std::string str);
+		static void	convertInt(const std::string str);
+		static void	convertDouble(const std::string str);
+		static void	convertFloat(const std::string str);
+
+		static void displayAll(char c, int i, float f, double d, std::string str);
+		static void	displayC(char c, std::string str);
+		static void	displayI(int i, std::string str);
+		static void	displayF(float f, std::string str) ;
+		static void	displayD(double d, std::string str);
 
 	public:
-
+		static e_type	getType(const std::string &str);
 		static void	convert(std::string str);
+
 };
 
 std::ostream &operator<<(std::ostream &o, ScalarConverter const &i);

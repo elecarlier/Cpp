@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:06:15 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/09/24 20:05:40 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:57:59 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,72 +39,237 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy)
 
 void	ScalarConverter::convert(std::string str )
 {
-
-	char	char_value;
-	int		int_value;
-	float	float_value;
-	double	double_value;
-
 	switch(getType(str))
 	{
 		case CHAR:
 		{
-			// char_value = str[0];
-			// int_value = static_cast<int>(char_value);
-			// float_value = static_cast<float>(char_value);
-			// double_value = static_cast<double>(char_value);
-			//display + convert
+			convertChar(str);
 			break;
 		}
-
 		case INT:
 		{
-
+			convertInt(str);
+			break;
 		}
 		case FLOAT:
-		case POS_INFF:
-		case NEG_INFF:
-		case NANF:
 		{
+			convertFloat(str);
 			break;
 		}
 		case DOUBLE:
-		case POS_INF:
-		case NEG_INF:
-		case NAND:
 		{
-
+			convertDouble(str);
 			break;
 		}
+		case POS_INFF:
+		case POS_INF:
+		{
+			std::cout << "char: impossible"<< std::endl;
+			std::cout << "int: impossible"<< std::endl;
+			std::cout << "float: +inff"<< std::endl;
+			std::cout << "double: +inf"<< std::endl;
+			break;
+		}
+		case NEG_INFF:
+		case NEG_INF:
+		{
+			std::cout << "char: impossible"<< std::endl;
+			std::cout << "int: impossible"<< std::endl;
+			std::cout << "float: -inff"<< std::endl;
+			std::cout << "double: -inf"<< std::endl;
+			break;
+		}
+		case NANF:
+		case NAND:
+		{
+			std::cout << "char: impossible"<< std::endl;
+			std::cout << "int: impossible"<< std::endl;
+			std::cout << "float: nanf"<< std::endl;
+			std::cout << "double: nan"<< std::endl;
+			break;
+		}
+		case UNDEFINNED:
 		case ERROR:
+			std::cout << "Error: impossible to identidy type" << std::endl;
+			break;
+	}
+}
+/*
+regcomp : compile regex, prend la chaine de caracteres du motif et la transforme en une expression reguliere
+regexec : execute la recherche, renvoie 0 si la correspondance est trouvee, on utilise == 0
+donc si une correspondance est trouve -> 0 == 0 -> true
+*/
+bool ScalarConverter::checkRegex(const std::string str, const std::string pattern)
+{
+	regex_t regex;
+	if (regcomp(&regex, pattern.c_str(), REG_EXTENDED) != 0)
+	{
+		std::cout << "Regex failed" << std::endl;
+		return (false);
+	}
+	bool match = regexec(&regex, str.c_str(), 0, NULL, 0) == 0;
+	regfree(&regex);
+	return (match);
+}
+
+
+/*
+^[[:space:]]*[+-]?[0-9]+$ ->
+^[...] motif commence au debut de la chaine
+[:space:]* 0 ou plusieurs espaces
+[+-]? facultatif
+[0-9]+ (+ signifie au moins un chiffre)
+$ rien a la fin de la chaine
+
+*/
+e_type	ScalarConverter::getType(const std::string &str)
+{
+
+	e_type res = UNDEFINNED;
+	if (str.empty())
+		res = ERROR;
+	else if (checkRegex(str, "^.$") && !isdigit(str[0]))
+		res = CHAR;
+	else if (str == "-inff")
+		res = NEG_INFF;
+	else if (str == "+inff")
+		res =  POS_INFF;
+	else if (str == "+inf")
+		res = POS_INF;
+	else if (str == "-inf")
+		res = NEG_INF;
+	else if (str == "nan")
+		res = NAND;
+	else if  (str == "nanf")
+		res = NANF;
+	else if (checkRegex(str, "^[[:space:]]*[+-]?[0-9]+$"))
+		res = INT;
+	else if (checkRegex(str, "^[[:space:]]*[+-]?[0-9]+\\.[0-9]+f$"))
+		res = FLOAT;
+	else if (checkRegex(str, "^[[:space:]]*[+-]?[0-9]+\\.[0-9]+$"))
+		res = DOUBLE;
+
+
+	//std::cout << res << std::endl;
+	return (res);
+}
+
+/*------------------------------- Conversion -------------------------------*/
+
+void	ScalarConverter::convertChar(const std::string str)
+{
+	char	c = static_cast<char>(str[0]);
+	int		i = static_cast<int>(c);
+	float	f = static_cast<float>(c);
+	double	d = static_cast<double>(c);
+	displayAll(c, i, f, d, str);
+}
+
+void	ScalarConverter::convertInt(const std::string str)
+{
+	int			i = atoi(str.c_str());
+	long long	l = atoll(str.c_str());
+	double d = strtod(str.c_str(), NULL);
+
+	if (l > static_cast<long long>(2147483647) || l < static_cast<long long>(-2147483648))
+		displayAll(0, 0, 0, 0, str); //conversion not possible without losing precision
+	else if (d < static_cast<double>(-2147483648) || d > static_cast<double>(2147483647) || d != static_cast<int>(d))
+	{
+		displayAll(0, 0, 0, 0, str);
+	}
+	else
+	{
+		char		c = static_cast<char>(i);
+		float		f = static_cast<float>(i);
+		double		d = static_cast<double>(i);
+		displayAll(c, i, f, d, str);
 	}
 }
 
-int	ScalarConverter::getType(const std::string &str)
+void	ScalarConverter::convertDouble(const std::string str)
 {
-
-	// if (str.empty())
-	// 	return ERROR;
-	if (str.length() == 1 && str.at(0) >= 0 && str.at(0) >= 127 && !isdigit(str.at(0)))
-		return CHAR;
-
-	
-
-	// if (str == "-inff")
-	// 	return NEG_INFF;
-	// else if (str == "+inff")
-	// 	return POS_INFF;
-	// else if (str == "+inf")
-	// 	return POS_INF;
-	// else if (str == "-inf")
-	// 	return NEG_INF;
+	double		d = strtod(str.c_str(), NULL);
+	float		f = static_cast<float>(d);
+	int			i = static_cast<int>(d);
+	char		c = static_cast<char>(d);
+	displayAll(c, i, f, d, str);
 }
-// void	ScalarConverter::display(char c)
-// {
-// 	std::cout << "char : ";
 
-// 	if (c < 32 || c > 126)
-// 		std::cout << "Non displayable" << std::endl;
-// 	else
-// 		std::cout << "'" << c << "'" << std::endl;
-// }
+
+void	ScalarConverter::convertFloat(const std::string str)
+{
+	float		f = strtof(str.c_str(), NULL);
+	int			i = static_cast<int>(f);
+	char		c = static_cast<char>(f);
+	double		d = static_cast<double>(f);
+	displayAll(c,i,f,d, str);
+}
+
+
+bool	ScalarConverter::isNull(const std::string str)
+{
+	if (str == "0" || str == "0.0" || str == "0.0f" || str == "-0" || str == "-0.0" || str == "-0.0f")
+		return (true);
+	return (false);
+}
+
+/*------------------------------- Display -------------------------------*/
+
+
+
+void	ScalarConverter::displayC(char c, std::string str)
+{
+	if (static_cast<int>(c) == 0 && !isNull(str))
+		std::cout << "impossible" << std::endl;
+	else if (c < 32 || c > 126)
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "'" << c << "'" << std::endl;
+}
+
+void	ScalarConverter::displayI(int i, std::string str)
+{
+	if (i == 0 && !isNull(str))
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << i << std::endl;
+}
+
+void	ScalarConverter::displayF(float f, std::string str)
+{
+	if (f == static_cast<double>(0) && !isNull(str))
+		std::cout << "impossible" << std::endl;
+	else
+	{
+		std::cout << f;
+		if (static_cast<int>(f) == f)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+	}
+
+}
+
+void	ScalarConverter::displayD(double d, std::string str)
+{
+	if (d == static_cast<double>(0) && !isNull(str))
+		std::cout << "impossible" << std::endl;
+		else
+	{
+		std::cout << d;
+		if (static_cast<int>(d) == d)
+			std::cout << ".0";
+		std::cout << std::endl;
+	}
+}
+
+void ScalarConverter::displayAll(char c, int i, float f, double d, std::string str)
+{
+	std::cout << "char: ";
+	displayC(c, str);
+	std::cout << "int: ";
+	displayI(i, str);
+	std::cout << "float: ";
+	displayF(f, str);
+	std::cout << "double: ";
+	displayD(d, str);
+}
