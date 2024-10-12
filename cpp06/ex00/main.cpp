@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 15:23:18 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 17:40:33 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:39:42 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,37 @@ int main(int argc, char *argv[])
 
 
 /*
-./convert 3.14
+./ex00  3.14
 char: Non displayable
 int: 3
 float: 3.14f
 double: 3.14
 
-./convert 'A'
+./ex00 'A'
 char: 'A'
 int: 65
 float: 65.0f
 double: 65.0
 
-./convert 100
+./ex00 100
 char: 'd'
 int: 100
 float: 100.0f
 double: 100.0
 
-./convert 42.0f
+./ex00 42.0f
 char: '*'
 int: 42
 float: 42.0f
 double: 42.0
 
-./convert nan
+./ex00 nan
 char: impossible
 int: impossible
 float: nanf
 double: nan
 
-./convert 0
+./ex00 0
 char: Non displayable
 int: 0
 float: 0.0f

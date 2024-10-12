@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:06:15 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 17:38:29 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:46:28 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy)
 		*this = copy;
 	return *this;
 }
-
 
 void	ScalarConverter::convert(std::string str )
 {
@@ -101,6 +100,7 @@ void	ScalarConverter::convert(std::string str )
 			break;
 	}
 }
+
 /*
 regcomp : compile regex, prend la chaine de caracteres du motif et la transforme en une expression reguliere
 regexec : execute la recherche, renvoie 0 si la correspondance est trouvee, on utilise == 0
@@ -156,8 +156,6 @@ e_type	ScalarConverter::getType(const std::string &str)
 	else if (checkRegex(str, "^[[:space:]]*[+-]?[0-9]+\\.[0-9]+$"))
 		res = DOUBLE;
 
-
-	//std::cout << res << std::endl;
 	return (res);
 }
 
@@ -226,7 +224,6 @@ void	ScalarConverter::convertFloat(const std::string str)
 		displayAll(c,i,f,d, str);
 	}
 }
-
 
 bool	ScalarConverter::isNull(const std::string str)
 {

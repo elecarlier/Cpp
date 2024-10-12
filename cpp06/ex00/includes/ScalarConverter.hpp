@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:04:38 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 18:19:57 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:44:49 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,17 @@ class ScalarConverter
 	private:
 		ScalarConverter(); //private so it can't be instanciate
 		ScalarConverter(const ScalarConverter &copy);
-
 		ScalarConverter &operator=(const ScalarConverter &copy);
+		~ScalarConverter();
 
+	public:
+
+		static e_type	getType(const std::string &str);
+		static void	convert(std::string str);
 
 		static bool		checkRegex(const std::string str, const std::string pattern);
-
 		static bool	isNull(const std::string str);
+
 		static void	convertChar(const std::string str);
 		static void	convertInt(const std::string str);
 		static void	convertDouble(const std::string str);
@@ -58,11 +62,6 @@ class ScalarConverter
 		static void	displayI(int i, std::string str);
 		static void	displayF(float f, std::string str) ;
 		static void	displayD(double d, std::string str);
-
-	public:
-		static e_type	getType(const std::string &str);
-		static void	convert(std::string str);
-		~ScalarConverter();
 };
 
 #endif // ScalarConverter_HPP
