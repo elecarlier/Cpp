@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:06:15 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 16:57:59 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 17:38:29 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ void	ScalarConverter::convert(std::string str )
 			break;
 		}
 		case UNDEFINNED:
+		{
+			std::cout << "char: impossible"<< std::endl;
+			std::cout << "int: impossible"<< std::endl;
+			std::cout << "float: impossible"<< std::endl;
+			std::cout << "double: impossible"<< std::endl;
+			break;
+		}
 		case ERROR:
 			std::cout << "Error: impossible to identidy type" << std::endl;
 			break;
@@ -171,9 +178,9 @@ void	ScalarConverter::convertInt(const std::string str)
 	long long	l = atoll(str.c_str());
 	double d = strtod(str.c_str(), NULL);
 
-	if (l > static_cast<long long>(2147483647) || l < static_cast<long long>(-2147483648))
+	if (l > static_cast<long long>(INT_MAX) || l < static_cast<long long>(INT_MIN))
 		displayAll(0, 0, 0, 0, str); //conversion not possible without losing precision
-	else if (d < static_cast<double>(-2147483648) || d > static_cast<double>(2147483647) || d != static_cast<int>(d))
+	else if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(2147483647) || d != static_cast<int>(d))
 	{
 		displayAll(0, 0, 0, 0, str);
 	}
@@ -189,20 +196,35 @@ void	ScalarConverter::convertInt(const std::string str)
 void	ScalarConverter::convertDouble(const std::string str)
 {
 	double		d = strtod(str.c_str(), NULL);
-	float		f = static_cast<float>(d);
-	int			i = static_cast<int>(d);
-	char		c = static_cast<char>(d);
-	displayAll(c, i, f, d, str);
+	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
+	{
+		displayAll(0, 0, 0, 0, str);  // Not possible to convert to int
+	}
+	else
+	{
+		float		f = static_cast<float>(d);
+		int			i = static_cast<int>(d);
+		char		c = static_cast<char>(d);
+		displayAll(c, i, f, d, str);
+	}
+
 }
 
 
 void	ScalarConverter::convertFloat(const std::string str)
 {
 	float		f = strtof(str.c_str(), NULL);
-	int			i = static_cast<int>(f);
-	char		c = static_cast<char>(f);
-	double		d = static_cast<double>(f);
-	displayAll(c,i,f,d, str);
+	if (f < static_cast<float>(INT_MIN) || f > static_cast<float>(INT_MAX))
+	{
+		displayAll(0, 0, 0, 0, str);  // Not possible to convert to int
+	}
+	else
+	{
+		int			i = static_cast<int>(f);
+		char		c = static_cast<char>(f);
+		double		d = static_cast<double>(f);
+		displayAll(c,i,f,d, str);
+	}
 }
 
 
@@ -253,7 +275,7 @@ void	ScalarConverter::displayD(double d, std::string str)
 {
 	if (d == static_cast<double>(0) && !isNull(str))
 		std::cout << "impossible" << std::endl;
-		else
+	else
 	{
 		std::cout << d;
 		if (static_cast<int>(d) == d)

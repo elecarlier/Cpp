@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:04:38 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 16:52:34 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 17:24:39 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <cmath>
 #include <regex.h>
+#include <limits.h>
 
 
 enum e_type
