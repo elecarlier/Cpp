@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:20:45 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 18:27:36 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:51:46 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,11 @@ int main() {
 
 	return 0;
 }
+
+
+/*
+REINTERPRET cast
+Allows casting between unrelated pointer types or between pointers and integers.
+Provides no type safety—simply reinterprets the memory bits.
+Risky; should be used sparingly and with caution.
+*/

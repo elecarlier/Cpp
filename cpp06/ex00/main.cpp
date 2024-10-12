@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 15:23:18 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 19:39:42 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:53:33 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,12 @@ int: 0
 float: 0.0f
 double: 0.0
 
+*/
+
+/*
+static_cast
+Used for compile-time casting where types are related or conversions are well-defined.
+Performs no runtime checks—assumes the cast is valid based on the code’s context.
+Useful for implicit conversions (e.g., int to float) or explicit type casting where types are compatible.
+Generally faster than dynamic_cast due to lack of runtime checks.
 */
