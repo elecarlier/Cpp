@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:04:38 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 17:24:39 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/12 18:19:57 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class ScalarConverter
 	private:
 		ScalarConverter(); //private so it can't be instanciate
 		ScalarConverter(const ScalarConverter &copy);
-		~ScalarConverter();
+
 		ScalarConverter &operator=(const ScalarConverter &copy);
 
 
@@ -62,9 +62,7 @@ class ScalarConverter
 	public:
 		static e_type	getType(const std::string &str);
 		static void	convert(std::string str);
-
+		~ScalarConverter();
 };
-
-std::ostream &operator<<(std::ostream &o, ScalarConverter const &i);
 
 #endif // ScalarConverter_HPP
