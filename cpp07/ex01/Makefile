@@ -4,7 +4,7 @@ RESET = \033[0m
 
 OBJ_DIR = obj
 
-NAME = ex00
+NAME = ex01
 
 SRCS =	main.cpp\
 
