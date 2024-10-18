@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 22:21:33 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 22:41:51 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:08:10 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ Array<T>::Array(): _array(NULL), _size(0) { }
 
 /*Creates an array of n elements initialized by default*/
 template <typename T>
-Array<T>::Array(unsigned int n): _array(new T[n]), _size(n) { }
+Array<T>::Array(unsigned int n): _array(new T[n]), _size(n)
+{
+	for (unsigned int i = 0; i < n; ++i)
+		_array[i] = T();
+}
 
 
 template <typename T>
@@ -42,7 +46,7 @@ Array<T>::~Array()
 }
 
 template<typename T>
-unsigned int  Array<T>::size()
+unsigned int  Array<T>::size() const
 {
 	return (this->_size);
 }
@@ -50,7 +54,7 @@ unsigned int  Array<T>::size()
 template<typename T>
 T &Array<T>::operator[](unsigned int n)
 {
-	if (n < 0 || n >= this->_size)
+	if (n >= this->_size)
 		throw Array::indexOutOFBound();
 	return (_array[n]);
 }
@@ -73,5 +77,5 @@ Array<T> &Array<T>::operator=(const Array<T> &src)
 template<typename T>
 const char* Array<T>::indexOutOFBound::what() const throw()
 {
-	return ("Throwing exception : index out of bound\n");
+	return ("Exception : index out of bound\n");
 }

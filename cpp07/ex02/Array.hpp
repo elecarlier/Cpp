@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 22:13:07 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/10/12 22:41:12 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:07:08 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Array
 {
 	private:
 
-		T*		_array;
+		T*					_array;
 		unsigned int		_size;
 
 	public:
@@ -31,7 +31,7 @@ class Array
 		Array<T>& operator=(const Array<T>& other);
 		~Array();
 
-		unsigned int	size();
+		unsigned int	size() const;
 
 		T& operator[](unsigned int index);
 
