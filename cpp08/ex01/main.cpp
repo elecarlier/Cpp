@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:14 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/19 20:46:28 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:20:26 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,34 @@ int main()
 		}
 
 
+	}
+	{
+		std::cout << YELLOW << "TEST 5 : adding with range" << RESET << std::endl;
+		Span sp(10);
+
+		sp.addNumber(1);
+
+		std::vector<int> nums = {10, 20, 30, 40};
+
+		sp.addRange(nums.begin(), nums.end());
+		std::cout << sp << std::endl;
+
+	}
+	{
+		try {
+			std::cout << YELLOW << "TEST 6 : overflow with range " << RESET << std::endl;
+			Span sp(2);
+
+			sp.addNumber(1);
+
+			std::vector<int> nums = {10, 20, 30, 40};
+
+			sp.addRange(nums.begin(), nums.end()); // Cette ligne lèvera une exception
+			std::cout << sp << std::endl;
+
+		} catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl; // Affichera le message d'erreur de l'exception
+		}
 	}
 	// {
 	// 	std::cout << YELLOW << "TEST 4 : big capacity" << RESET << std::endl;

@@ -6,13 +6,13 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:12:24 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/19 20:52:05 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:17:46 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
 
-Span::Span()
+Span::Span() :  _N(0)
 {
 	#ifdef DEBUG_MODE
 		std::cout << "\033[33m" << "Default constructor called" << "\033[0m" << std::endl;
@@ -20,9 +20,8 @@ Span::Span()
 
 }
 
-Span::Span(unsigned int N)
+Span::Span(unsigned int N) : _N(N)
 {
-	_N = N;
 	#ifdef DEBUG_MODE
 		std::cout << "\033[33m" << "Default constructor called" << "\033[0m" << std::endl;
 	#endif
@@ -37,19 +36,20 @@ Span::~Span()
 
 }
 
-Span::Span(const Span &copy)
+Span::Span(const Span &copy) : _N(copy._N), _vec(copy._vec)
 {
-	 *this = copy;
 	#ifdef DEBUG_MODE
 		std::cout << "\033[34m" << "Copy constructor called" << "\033[0m" << std::endl;
 	#endif
 
 }
 
-/*NOT DONE YET*/
 Span &Span::operator=(const Span &copy)
 {
-	(void)copy;
+	if (this != &copy) {
+		this->_N = copy._N;
+		this->_vec = copy._vec;
+	}
 	#ifdef DEBUG_MODE
 	std::cout << "\033[35m" << "Copy assignment operator called" << "\033[0m" << std::endl;
 	#endif
@@ -58,6 +58,13 @@ Span &Span::operator=(const Span &copy)
 }
 
 
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	unsigned int count = std::distance(begin, end);
+	if (_vec.size() + count > _N)
+		throw Span::Spanfull();
+	_vec.insert(_vec.end(), begin, end);
+}
 
 /*
 	add a single number to the Span
@@ -142,3 +149,29 @@ const char*	Span::NoSpanFound::what() const throw()
 {
 	return ("Throwing execption : no span found.");
 }
+
+const std::vector<int>& Span::getVector() const
+{
+        return _vec;
+}
+
+std::ostream& operator<<(std::ostream& os, const Span& span)
+{
+    const std::vector<int>& vec = span.getVector(); // Utilise le getter
+
+    if (vec.empty()) {
+        os << "Span is empty.";
+        return os;
+    }
+
+    os << "[ ";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        os << vec[i];
+        if (i < vec.size() - 1) {
+            os << ", ";
+        }
+    }
+    os << " ]";
+    return os;
+}
+

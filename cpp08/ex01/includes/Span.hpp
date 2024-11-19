@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:12:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/19 20:39:59 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:14:55 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ class Span {
 		Span &operator=(const Span &copy);
 		~Span();
 
+		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		void addNumber(int n);
 		int shortestSpan();
 		int longestSpan();
+		const std::vector<int>& getVector() const;
 
 		void	checkElement();
 
