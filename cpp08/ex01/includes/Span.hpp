@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:12:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/19 19:51:48 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:39:59 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 #include <climits>
 #include <algorithm>
 
+#define RESET   "\033[0m"
+#define BOLD    "\033[1m"
+#define BLUE    "\033[34m"
+#define CYAN    "\033[36m"
+#define YELLOW  "\033[33m"
+#define GREEN   "\033[32m"
+#define RED     "\033[31m"
 
 class Span {
 	private:

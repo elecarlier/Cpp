@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:12:24 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/19 20:02:33 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:52:05 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,17 @@ int Span::shortestSpan()
 	}
 	std::vector<int> temp = this->_vec; //temporary sorted vector
 	std::sort(temp.begin(), temp.end());
-
+	int shortest = INT_MAX;
+	for (size_t i = 0; i < temp.size() - 1; ++i)
+	{
+		int span = temp[i + 1] - temp[i];
+		if (span < shortest)
+			shortest = span;
+	}
+	return shortest;
 }
+
+
 int Span::longestSpan()
 {
 	try
@@ -104,7 +113,15 @@ int Span::longestSpan()
 		std::cerr << "Error: " << e.what() << std::endl;
 		return -1;
 	}
+	std::vector<int> temp = this->_vec; //temporary sorted vector
+	std::sort(temp.begin(), temp.end());
+
+	int longest = temp.back() - temp.front();
+
+	return longest;
 }
+
+
 
 const char*	Span::Spanfull::what() const throw()
 {
