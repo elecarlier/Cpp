@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:14 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/19 21:20:26 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:52:53 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,37 +29,37 @@ int main()
 	}
 	{
 		std::cout << YELLOW << "TEST 1 : empty span" << RESET << std::endl;
-		Span sp = Span(0); // Crée un Span vide (impossible d'ajouter des éléments)
+		Span sp = Span(0);
 
 		try {
 			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 		} catch (const std::exception& e) {
-			std::cerr << "Error (empty span): " << e.what() << std::endl;  // Doit lancer une exception de type "NoElement"
+			std::cerr << "Error (empty span): " << e.what() << std::endl;
 		}
 
 		try {
 			std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 		} catch (const std::exception& e) {
-			std::cerr << "Error (empty span): " << e.what() << std::endl;  // Devrait aussi lancer une exception
+			std::cerr << "Error (empty span): " << e.what() << std::endl;
 		}
 
 
 	}
 	{
 		std::cout << YELLOW << "TEST 2 : one element" << RESET << std::endl;
-		Span sp = Span(1); // Crée un Span qui peut contenir 1 seul élément
-		sp.addNumber(5); // Ajoute un seul élément
+		Span sp = Span(1);
+		sp.addNumber(5);
 
 		try {
 			std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 		} catch (const std::exception& e) {
-			std::cerr << "Error (one element): " << e.what() << std::endl;  // Devrait lancer une exception "OnlyOneElement"
+			std::cerr << "Error (one element): " << e.what() << std::endl;
 		}
 
 		try {
 			std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 		} catch (const std::exception& e) {
-			std::cerr << "Error (one element): " << e.what() << std::endl;  // Devrait aussi lancer une exception
+			std::cerr << "Error (one element): " << e.what() << std::endl;
 		}
 
 
@@ -73,8 +73,8 @@ int main()
 		sp.addNumber(-9);
 		sp.addNumber(11);
 
-		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;  // Devrait afficher 2 (9 - 11)
-		std::cout << "Longest span: " << sp.longestSpan() << std::endl;  // Devrait afficher 26 (17 - (-9))
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 
 
 	}
@@ -114,11 +114,11 @@ int main()
 
 			std::vector<int> nums = {10, 20, 30, 40};
 
-			sp.addRange(nums.begin(), nums.end()); // Cette ligne lèvera une exception
+			sp.addRange(nums.begin(), nums.end());
 			std::cout << sp << std::endl;
 
 		} catch (const std::exception& e) {
-			std::cerr << e.what() << std::endl; // Affichera le message d'erreur de l'exception
+			std::cerr << e.what() << std::endl;
 		}
 	}
 	// {
