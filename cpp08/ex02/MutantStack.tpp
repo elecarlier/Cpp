@@ -40,6 +40,7 @@ template <typename T>
 typename std::stack<T>::container_type::const_iterator MutantStack<T>::end() const {
     return this->c.end();
 }
+
 template <typename T>
 typename std::stack<T>::container_type::reverse_iterator MutantStack<T>::rbegin() {
     return this->c.rbegin();

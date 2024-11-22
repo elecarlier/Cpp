@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:56:47 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/11/20 14:37:39 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:26:40 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <list>
 
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"
