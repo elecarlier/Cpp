@@ -9,15 +9,14 @@ template <typename T>
 MutantStack<T>::~MutantStack() {}
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack &copy)
-{
-	*this = copy;
-}
+MutantStack<T>::MutantStack(const MutantStack &copy) : MutantStack::stack(copy)
+{}
 
 template <typename T>
 MutantStack<T>		&MutantStack<T>::operator=(const MutantStack &copy)
 {
-	(void)copy;
+	if (this != &copy)
+		this->c = copy.c;
 	return (*this);
 }
 

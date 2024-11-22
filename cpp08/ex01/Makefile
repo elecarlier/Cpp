@@ -3,8 +3,15 @@ RESET = \033[0m
 
 NAME = ex01
 
+DEBUG = 0
+
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
+
+ifeq ($(DEBUG),1)
+	CFLAGS += -DDEBUG_MODE
+endif
+
 
 SRCS = $(wildcard sources/*.cpp) main.cpp
 OBJS = $(SRCS:.cpp=.o)
