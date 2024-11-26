@@ -1,5 +1,8 @@
 /*
-
+This program must use a database in csv format which will represent bitcoin price
+over time. This database is provided with this subject.
+The program will take as input a second database, storing the different prices/dates
+to evaluate.
 
 
 */
@@ -16,7 +19,7 @@ int	main(int argc, char* argv[])
 		return (EXIT_FAILURE);
 	}
 	try {
-		BitcoinExchange btc;
+		BitcoinExchange btc(argv[1]);
 	}
 	catch(const std::exception& e) {
 			std::cerr << e.what() << std::endl;

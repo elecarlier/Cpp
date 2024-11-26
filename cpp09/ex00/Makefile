@@ -3,7 +3,7 @@ RESET = \033[0m
 
 NAME = btc
 
-DEBUG = 0
+DEBUG = 1
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
