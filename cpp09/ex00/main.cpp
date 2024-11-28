@@ -4,6 +4,9 @@ over time. This database is provided with this subject.
 The program will take as input a second database, storing the different prices/dates
 to evaluate.
 
+If the date used in the input does not exist in your DB then you
+must use the closest date contained in your DB. Be careful to use the
+lower date and not the upper one.
 
 */
 
