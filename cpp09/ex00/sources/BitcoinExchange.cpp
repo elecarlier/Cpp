@@ -141,7 +141,7 @@ void BitcoinExchange::readInputFile(std::string path)
 void BitcoinExchange::calculateRes(double value, std::string date)
 {
 	double res;
-	std::cout << date << " => " << value << " = " << std::endl;
+	std::cout << date << " => " << value << " = ";
 
 	std::map<std::string, double>::iterator it;
 	it = this->_dataMap.find(date);
@@ -150,17 +150,16 @@ void BitcoinExchange::calculateRes(double value, std::string date)
 	if (it != this->_dataMap.end())
 	{
 		 res = it->second * value;
-
 	}
 	else
 	{
 		std::map<std::string, double>::iterator it = _dataMap.lower_bound(date);
 		if (it == this->_dataMap.begin())
-		std::cout << "date to early" << std::endl;
+			std::cout << "date to early" << std::endl;
 		else
 		{
 			--it; //iterate to closest earlier date
-			res = it->second;
+			res = it->second * value;
 		}
 	}
 	std::cout << res << std::endl;
@@ -185,29 +184,32 @@ void BitcoinExchange::parseDatebase()
 		try
 		{
 			std::getline(ss, date, ',');
-			ss >> value;
-			if (!isValidDate(date))
+			if (!isValidDate(date)) {
 				throw InvalidDate();
+			}
 
-			if (!(ss >> value))
+			if (!(ss >> value)) {
 				throw InvalidValue();
+			}
 
-			if (value < 0 || value > 1000)
+			if (value < 0 || value > 1000) {
 				throw InvalidValue();
+			}
 
 			this->_dataMap[date] = value;
+
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << BLUE << "DATABASE : Invalid value or date for date: " << date << " with value : " << value << RESET<< std::endl;
+			//std::cerr << BLUE << "DATABASE : Invalid value or date for date: " << date << " with value : " << value << RESET<< std::endl;
 		}
 
 	}
 
-	#ifdef DEBUG_MODE
-		for (std::map<std::string, double>::iterator it = this->_dataMap.begin(); it != this->_dataMap.end(); ++it)
-			std::cout << "Date: " << it->first << ", Value: " << it->second << std::endl;
-	#endif
+	// #ifdef DEBUG_MODE
+	// 	for (std::map<std::string, double>::iterator it = this->_dataMap.begin(); it != this->_dataMap.end(); ++it)
+	// 		std::cout << "Date: " << it->first << ", Value: " << it->second << std::endl;
+	// #endif
 
 	file.close();
 }
