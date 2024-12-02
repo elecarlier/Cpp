@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:53:06 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/02 13:56:19 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:16:01 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class BitcoinExchange {
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
 		~BitcoinExchange();
 
+		void calculateRes(double value, std::string date);
 		bool isValidDate(const std::string& date);
 		void readInputFile(std::string path);
 		void parseInput(std::string path);

@@ -108,7 +108,6 @@ void BitcoinExchange::readInputFile(std::string path)
 
 		std::stringstream ss(line);
 		std::getline(ss, date, '|');
-		//date.erase(std::remove(date.begin(), date.end(), ' '), date.end()); //remove spaces
 
 		try
 		{
@@ -120,7 +119,8 @@ void BitcoinExchange::readInputFile(std::string path)
 				throw ValueNegativeException();
 			if (value > 1000)
 				throw ValueTooBig();
-			std::cout << "Valid date and value : " << date << " -> " << value << std::endl;
+			calculateRes(value, date);
+			//std::cout << "Valid date and value : " << date << " -> " << value << std::endl;
 		}catch(const std::exception& e)
 		{
 			std::cerr << CYAN << "Error: Invalid value or date for date: " << date << " with value : " << value << RESET << std::endl;
@@ -128,6 +128,7 @@ void BitcoinExchange::readInputFile(std::string path)
 
 
 	}
+
 
 
 //     #ifdef DEBUG_MODE
@@ -138,9 +139,10 @@ void BitcoinExchange::readInputFile(std::string path)
 	file.close();
 }
 
-
-
-
+void BitcoinExchange::calculateRes(double value, std::string date)
+{
+	std::cout << date << " => " << value << " = " << std::endl;
+}
 
 void BitcoinExchange::parseDatebase()
 {
@@ -177,7 +179,6 @@ void BitcoinExchange::parseDatebase()
 			std::cerr << BLUE << "DATABASE : Invalid value or date for date: " << date << " with value : " << value << RESET<< std::endl;
 		}
 
-		//this->_dataMap[date] = value;
 	}
 
 	#ifdef DEBUG_MODE
@@ -188,15 +189,6 @@ void BitcoinExchange::parseDatebase()
 	file.close();
 }
 
-// void BitcoinExchange::checkDate(std::string date)
-// {
-
-// }
-
-// void BitcoinExchange::checkValue(std::string date)
-// {
-
-// }
 
 
 const char* BitcoinExchange::InvalidDate::what() const throw()
