@@ -130,7 +130,6 @@ void BitcoinExchange::readInputFile(std::string path)
 	}
 
 
-
 //     #ifdef DEBUG_MODE
 //     for (std::map<std::string, double>::iterator it = this->_inputMap.begin(); it != this->_inputMap.end(); ++it)
 //         std::cout << "Date: " << it->first << ", Exchange rate: " << it->second << std::endl;
@@ -141,8 +140,32 @@ void BitcoinExchange::readInputFile(std::string path)
 
 void BitcoinExchange::calculateRes(double value, std::string date)
 {
+	double res;
 	std::cout << date << " => " << value << " = " << std::endl;
+
+	std::map<std::string, double>::iterator it;
+	it = this->_dataMap.find(date);
+
+	/*if the iterator doesnt point to the end of the map it means the exact date has been found*/
+	if (it != this->_dataMap.end())
+	{
+		 res = it->second * value;
+
+	}
+	else
+	{
+		std::map<std::string, double>::iterator it = _dataMap.lower_bound(date);
+		if (it == this->_dataMap.begin())
+		std::cout << "date to early" << std::endl;
+		else
+		{
+			--it; //iterate to closest earlier date
+			res = it->second;
+		}
+	}
+	std::cout << res << std::endl;
 }
+
 
 void BitcoinExchange::parseDatebase()
 {
