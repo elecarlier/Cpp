@@ -6,7 +6,7 @@
 BitcoinExchange::BitcoinExchange(std::string path)
 {
 	parseDatebase();
-	parseInput(path);
+	readInputFile(path);
 	#ifdef DEBUG_MODE
 		std::cout << "\033[33m" << "Default constructor called" << "\033[0m" << std::endl;
 	#endif
@@ -84,52 +84,60 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 	return true;
 }
 
-void BitcoinExchange::parseInput(std::string path)
+
+void BitcoinExchange::readInputFile(std::string path)
 {
 	std::ifstream file(path.c_str());
 	std::string date;
 	double value;
 
 	if (!file.is_open())
-		throw OpenFileException();
+		std::cerr << "Error: could not open file" << std::endl;
+
 
 	std::string line;
 	std::getline(file, line);
 
 	while (std::getline(file, line))
 	{
+		if (line.empty())
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+
 		std::stringstream ss(line);
+		std::getline(ss, date, '|');
+		//date.erase(std::remove(date.begin(), date.end(), ' '), date.end()); //remove spaces
+
 		try
 		{
-			std::getline(ss, date, '|');
-			date.erase(std::remove(date.begin(), date.end(), ' '), date.end());
-
-			if (!isValidDate(date))
-				throw InvalidDate();
-
+			if (isValidDate(date))
+					throw InvalidDate();
 			if (!(ss >> value))
-				throw InvalidDate();
-
+				throw InvalidValue();
 			if (value < 0)
-				throw InvalidDate();
-
-			this->_inputMap[date] = value;
-
-        }catch (const InvalidDate&)
+				throw ValueNegativeException();
+			if (value > 1000)
+				throw ValueTooBig();
+			std::cout << "Valid date and value : " << date << " -> " << value << std::endl;
+		}catch(const std::exception& e)
 		{
-		std::cerr << "Error: Invalid value or date for date: " << date << std::endl;
-            continue; // Passer à la ligne suivante
-
+			std::cerr << CYAN << "Error: Invalid value or date for date: " << date << " with value : " << value << RESET << std::endl;
 		}
+
+
 	}
 
-    #ifdef DEBUG_MODE
-    for (std::map<std::string, double>::iterator it = this->_inputMap.begin(); it != this->_inputMap.end(); ++it)
-        std::cout << "Date: " << it->first << ", Exchange rate: " << it->second << std::endl;
-    #endif
 
-    file.close();
+//     #ifdef DEBUG_MODE
+//     for (std::map<std::string, double>::iterator it = this->_inputMap.begin(); it != this->_inputMap.end(); ++it)
+//         std::cout << "Date: " << it->first << ", Exchange rate: " << it->second << std::endl;
+//     #endif
+
+	file.close();
 }
+
 
 
 
@@ -149,11 +157,27 @@ void BitcoinExchange::parseDatebase()
 	while (std::getline(file, line))
 	{
 		std::stringstream ss(line);
+		try
+		{
+			std::getline(ss, date, ',');
+			ss >> value;
+			if (!isValidDate(date))
+				throw InvalidDate();
 
-		std::getline(ss, date, ',');
-		ss >> value;
+			if (!(ss >> value))
+				throw InvalidValue();
 
-		this->_dataMap[date] = value;
+			if (value < 0 || value > 1000)
+				throw InvalidValue();
+
+			this->_dataMap[date] = value;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << BLUE << "DATABASE : Invalid value or date for date: " << date << " with value : " << value << RESET<< std::endl;
+		}
+
+		//this->_dataMap[date] = value;
 	}
 
 	#ifdef DEBUG_MODE
@@ -180,8 +204,21 @@ const char* BitcoinExchange::InvalidDate::what() const throw()
 	return ("Throwing exception : Invalid date :");
 }
 
+const char* BitcoinExchange::InvalidValue::what() const throw()
+{
+	return ("Throwing exception : Invalid value :");
+}
 
 const char*	BitcoinExchange::OpenFileException::what() const throw()
 {
 	return ("Throwing exception : no span found.");
+}
+const char*	BitcoinExchange::ValueNegativeException::what() const throw()
+{
+	return "Error: not a positive number";
+}
+
+const char*	BitcoinExchange::ValueTooBig::what() const throw()
+{
+	return "Error: too large a number";
 }
