@@ -1,15 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:21:32 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/02 18:24:57 by ecarlier         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/*
+1) Group the elements of X into [n/2] pairs of elements, arbitrarily, leaving one element unpaired if there is an odd number of elements.
+2) Perform [n/2] comparisons, one per pair, to determine the larger of the two elements in each pair.
+3) Recursively sort the [n/2] larger elements from each pair, creating a sorted sequence S of [n/2] of the input elements, in ascending order, using the merge-insertion sort.
+4) Insert at the start of S the element that was paired with the first and smallest element of S
+5) Insert the remaining [n/2] - 1 elements of X∖S into S. one at a time, with a specially chosen insertion  Use binary search in subsequences of S (as described below) to determine the position at which each element should be inserted.
 
+
+Group the elements of X into [n/2] pairs of elements -> if oddm leave the last element unpair
+Put the larger one of the pair on the front
+recursively sort the [n/2] larger elements from each pair
+*/
 #include "includes/PmergeMe.hpp"
 
 int	main(int argc, char* argv[])
@@ -26,12 +26,10 @@ int	main(int argc, char* argv[])
 			std::vector<int> vector;
 			std::deque<int> deque;
 
-
 			for (int i = 1; i < argc; ++i)
 			{
 				std::stringstream ss(argv[i]);
 				int nbr;
-
 
 				if (!(ss >> nbr) || !(ss.eof()))
 					throw std::invalid_argument("Invalid number");
@@ -41,21 +39,16 @@ int	main(int argc, char* argv[])
 				vector.push_back(nbr);
 				deque.push_back(nbr);
 			}
-			std::cerr << "Vector size before passing to PmergeMe: " << vector.size() << std::endl;
-			std::cerr << "Deque size before passing to PmergeMe: " << deque.size() << std::endl;
-
-
-			std::cerr << "Debug Mode: Before creating PmergeMe object" << std::endl;
 
 			PmergeMe Pme(vector, deque);
 
 		}
 
-        catch (const std::exception& e) {
+		catch (const std::exception& e) {
 			std::cerr << e.what() << std::endl;
 			return (EXIT_FAILURE);
-        }
-    }
+		}
+	}
 	return 0;
 
 }
