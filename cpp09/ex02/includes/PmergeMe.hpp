@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:18:21 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/03 22:10:17 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/03 22:31:50 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ class PmergeMe {
 
 		void sort_vector();
 		void sort_deque();
+
+		std::deque<std::pair<int, int> > mergeInsertDeque(const std::deque<std::pair<int, int> >& left, const std::deque<std::pair<int, int> >& right);
+		std::deque<std::pair<int, int> > mergeInsertSortDeque( const std::deque<std::pair<int, int> >& pairs);
 
 		std::vector<std::pair<int, int> > mergeInsertSortVector( const std::vector<std::pair<int, int> >& pairs);
 		std::vector<std::pair<int, int> > mergeInsertVector(const std::vector<std::pair<int, int> >& left, const std::vector<std::pair<int, int> >& right);

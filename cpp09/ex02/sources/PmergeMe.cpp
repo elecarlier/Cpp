@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/03 22:09:59 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/03 22:39:59 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ void PmergeMe::sort_vector()
 	std::vector<std::pair<int, int> >	pairs;
 	std::vector<int>::iterator			it;
 
-
+	#ifdef DEBUG_MODE
+		std::cout << CYAN << "## Starting Vector sorting ###" << RESET << std::endl;
+	#endif
 
 	for (it = this->_vec.begin(); it != this->_vec.end() && it + 1 != this->_vec.end() ; it += 2)
 	{
@@ -100,10 +102,11 @@ void PmergeMe::sort_vector()
 		}
 		std::cout << std::endl;
 	#endif
+
 	pairs = mergeInsertSortVector(pairs);
 
 	#ifdef DEBUG_MODE
-		std::cout << "Vector pairs sorting complete." << RESET << std::endl;
+		std::cout << CYAN << "Vector pairs sorting complete."  << std::endl;
 		printPairs(pairs);
 	#endif
 
@@ -125,26 +128,33 @@ std::vector<std::pair<int, int> > PmergeMe::mergeInsertVector(const std::vector<
 	std::vector<std::pair<int, int> >::const_iterator itLeft = left.begin();
 	std::vector<std::pair<int, int> >::const_iterator itRight = right.begin();
 
-		while (itLeft != left.end() && itRight != right.end()) {
-			if (itLeft->first <= itRight->first) {
-				result.push_back(*itLeft);
-				++itLeft;
-			} else {
-				result.push_back(*itRight);
-				++itRight;
-			}
-		}
-
-		while (itLeft != left.end()) {
+	while (itLeft != left.end() && itRight != right.end())
+	{
+		if (itLeft->first <= itRight->first)
+		{
 			result.push_back(*itLeft);
 			++itLeft;
 		}
-
-		while (itRight != right.end()) {
+		else
+		{
 			result.push_back(*itRight);
 			++itRight;
 		}
-		return result;
+	}
+
+	while (itLeft != left.end())
+	{
+		result.push_back(*itLeft);
+		++itLeft;
+	}
+
+	while (itRight != right.end())
+	{
+		result.push_back(*itRight);
+		++itRight;
+	}
+
+	return result;
 }
 
 std::vector<std::pair<int, int> > PmergeMe::mergeInsertSortVector( const std::vector<std::pair<int, int> >& pairs)
@@ -196,7 +206,7 @@ void PmergeMe::sort_deque()
 	std::deque<int>::iterator			it;
 
 	#ifdef DEBUG_MODE
-		std::cout << YELLOW << "Sorting deque..." << std::endl;
+		std::cout << YELLOW << "## Starting deque sorting ###" << RESET << std::endl;
 	#endif
 
 	for (it = this->_deq.begin(); it != this->_deq.end() && it + 1 != this->_deq.end() ; it += 2)
@@ -214,28 +224,78 @@ void PmergeMe::sort_deque()
 		pairs.push_back(p);
 	}
 
-	pairs = sortPairs(pairs);
 
-	//recursiveVectorSort();
+
+
+	pairs = sortPairs(pairs);
+	pairs = mergeInsertSortDeque(pairs);
 
 	#ifdef DEBUG_MODE
-		std::cout << "Deque pairs sorting complete."<< RESET << std::endl;
+		std::cout << YELLOW << "Deque pairs sorting complete." << std::endl;
 		printPairs(pairs);
-
 	#endif
 
+}
 
+
+
+std::deque<std::pair<int, int> > PmergeMe::mergeInsertSortDeque( const std::deque<std::pair<int, int> >& pairs)
+{
+	if (pairs.size() <= 1)
+		return pairs;
+
+	//divide in two parts
+	std::deque<std::pair<int, int> >::const_iterator middle = pairs.begin() + pairs.size() / 2;
+	std::deque<std::pair<int, int> > leftPart(pairs.begin(), middle);
+	std::deque<std::pair<int, int> > rightPart(middle, pairs.end());
+
+	//recursive sort
+	leftPart = mergeInsertSortDeque(leftPart);
+	rightPart = mergeInsertSortDeque(rightPart);
+
+	//fusion
+	return mergeInsertDeque(leftPart, rightPart);
 }
 
 
 
 
 
+std::deque<std::pair<int, int> > PmergeMe::mergeInsertDeque(const std::deque<std::pair<int, int> >& left, const std::deque<std::pair<int, int> >& right)
+{
 
+	std::deque<std::pair<int, int> > result;
+	std::deque<std::pair<int, int> >::const_iterator itLeft = left.begin();
+	std::deque<std::pair<int, int> >::const_iterator itRight = right.begin();
 
+	while (itLeft != left.end() && itRight != right.end())
+	{
+		if (itLeft->first <= itRight->first)
+		{
+			result.push_back(*itLeft);
+			++itLeft;
+		}
+		else
+		{
+			result.push_back(*itRight);
+			++itRight;
+		}
+	}
 
+	while (itLeft != left.end())
+	{
+		result.push_back(*itLeft);
+		++itLeft;
+	}
 
+	while (itRight != right.end())
+	{
+		result.push_back(*itRight);
+		++itRight;
+	}
 
+	return result;
+}
 
 
 
@@ -257,9 +317,9 @@ int PmergeMe::getMidPoint(int start, int end) {
 void PmergeMe::printVector(bool is_before)
 {
 	if (is_before)
-		std::cout << "Vector "  << "before:\t";
+		std::cout << RESET << "Vector "  << "before:\t";
 	else
-		std::cout << "Vector "<< "after:\t";
+		std::cout << RESET << "Vector "<< "after:\t";
 
 	std::vector<int>::const_iterator it;
 	for (it = _vec.begin(); it != _vec.end(); ++it)
@@ -270,9 +330,9 @@ void PmergeMe::printVector(bool is_before)
 void PmergeMe::printDeque(bool is_before)
 {
 	if (is_before)
-		std::cout << "Deque " << " before:\t" ;
+		std::cout << RESET << "Deque " << " before:\t" ;
 	else
-		std::cout << "Deque "  << " after:\t";
+		std::cout << RESET << "Deque "  << " after:\t";
 
 	std::deque<int>::const_iterator it;
 	for (it = _deq.begin(); it != _deq.end(); ++it)

@@ -4,7 +4,7 @@ RESET = \033[0m
 NAME = PmergeMe
 
 DEBUG = 1
-MERGEINSERT = 1
+MERGEINSERT = 0
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
