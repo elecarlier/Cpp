@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:18:21 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/03 16:15:38 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/03 22:10:17 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,44 @@ class PmergeMe {
 
 
 		void printVector(bool is_before);
-
 		void printDeque(bool is_before);
 
 		void sort_vector();
 		void sort_deque();
 
-		template <typename Container>
-		Container sortPairs(Container pairs);
+		std::vector<std::pair<int, int> > mergeInsertSortVector( const std::vector<std::pair<int, int> >& pairs);
+		std::vector<std::pair<int, int> > mergeInsertVector(const std::vector<std::pair<int, int> >& left, const std::vector<std::pair<int, int> >& right);
 
-		std::vector<std::pair<int, int>> PmergeMe::sortPairs(std::vector<std::pair<int, int>> pairs);
+		int getMidPoint(int start, int end);
 
 		double getVectorSortingTime();
 		double getDequeSortingTime();
+
+
+		template <typename Container>
+		Container sortPairs(Container pairs)
+		{
+			typename Container::iterator it;
+			for (it = pairs.begin(); it != pairs.end(); it++)
+			{
+				if ((*it).first < (*it).second && (*it).first != -1)
+					std::swap((*it).first, (*it).second);
+			}
+			return pairs;
+		}
+
+		template <typename Container>
+		void printPairs(const Container& pairs)
+		{
+			typename Container::const_iterator it;
+			// std::cout << "Pairs: ";
+			for (it = pairs.begin(); it != pairs.end(); ++it)
+			{
+				std::cout << "(" << it->first << ", " << it->second << ") ";
+			}
+			std::cout << std::endl;
+		}
+
 
 		class CustomException : public std::exception {
 			public:

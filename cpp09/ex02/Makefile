@@ -4,6 +4,7 @@ RESET = \033[0m
 NAME = PmergeMe
 
 DEBUG = 1
+MERGEINSERT = 1
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
@@ -11,6 +12,11 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
 ifeq ($(DEBUG),1)
 	CFLAGS += -DDEBUG_MODE
 endif
+
+ifeq ($(MERGEINSERT),1)
+	CFLAGS += -DMERGEINSERT
+endif
+
 
 
 SRCS = $(wildcard sources/*.cpp) main.cpp
