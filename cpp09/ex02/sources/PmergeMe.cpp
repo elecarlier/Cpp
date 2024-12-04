@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/04 16:44:55 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:59:14 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
     _deq = deque;
 
 
-
+	generateJacobstalSequence(_vec.size());
 
     printVector(1);
     printDeque(1);
 
 	sort_vector();
 	sort_deque();
+
+
 
 	printVector(0);
 	printDeque(0);
@@ -110,8 +112,28 @@ void PmergeMe::sort_vector()
 		printPairs(pairs);
 	#endif
 
-	std::vector<int>	mainChain;
+	std::vector<int>	mainchain, pend;
+	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
+	{
+		mainchain.push_back(it->first);
+		pend.push_back(it->second);
+	}
+	if (!pend.empty())
+		mainchain.insert(mainchain.begin(), pend[0]);
 
+	#ifdef DEBUG_MODE
+		std::cout << "Mainchain: ";
+		for (std::vector<int>::iterator it = mainchain.begin(); it != mainchain.end(); ++it) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+
+		std::cout << "Pend: ";
+		for (std::vector<int>::iterator it = pend.begin(); it != pend.end(); ++it) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+	#endif
 
 }
 
@@ -331,14 +353,18 @@ void	PmergeMe::generateJacobstalSequence(int size)
 			next = size;
 		before_last = last;
 		last = next;
-		for (int i = next; i >= next; i--)
+		for (int i = next; i > before_last; i--)
 			_jacobsthalSequence.push_back(i);
 	}
+
+	_jacobsthalSequence.erase(_jacobsthalSequence.begin());
+	for (unsigned long i = 0; i < _jacobsthalSequence.size(); i++)
+		_jacobsthalSequence[i] = _jacobsthalSequence[i] - 1;
 
 	#ifdef DEBUG_MODE
 		std::vector<int>::const_iterator it;
 		for (it = _jacobsthalSequence.begin(); it != _jacobsthalSequence.end(); ++it)
-			std::cout << *it << " ";
+			std::cout << RESET << *it << " ";
 		std::cout << " _jacobsthalSequence" << std::endl;
 	#endif
 
