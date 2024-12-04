@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:18:21 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/03 22:31:50 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:06:50 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@
 
 class PmergeMe {
 	private:
-		std::vector<int> _vec;
-		std::deque<int> _deq;
-		double _vectorSortingTime;
-		double _dequeSortingTime;
+		std::vector<int>	_vec;
+		std::deque<int>		_deq;
+		std::vector<int>	_jacobsthalSequence;
+
+		double				_vectorSortingTime;
+		double				_dequeSortingTime;
 
 	public:
 		PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque);
@@ -56,7 +58,7 @@ class PmergeMe {
 		std::vector<std::pair<int, int> > mergeInsertSortVector( const std::vector<std::pair<int, int> >& pairs);
 		std::vector<std::pair<int, int> > mergeInsertVector(const std::vector<std::pair<int, int> >& left, const std::vector<std::pair<int, int> >& right);
 
-		int getMidPoint(int start, int end);
+		void	generateJacobstalSequence(int size);
 
 		double getVectorSortingTime();
 		double getDequeSortingTime();

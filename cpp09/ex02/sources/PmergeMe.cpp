@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/03 22:39:59 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:44:55 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ void PmergeMe::sort_vector()
 		std::cout << CYAN << "Vector pairs sorting complete."  << std::endl;
 		printPairs(pairs);
 	#endif
+
+	std::vector<int>	mainChain;
+
 
 }
 
@@ -224,9 +227,6 @@ void PmergeMe::sort_deque()
 		pairs.push_back(p);
 	}
 
-
-
-
 	pairs = sortPairs(pairs);
 	pairs = mergeInsertSortDeque(pairs);
 
@@ -305,11 +305,46 @@ std::deque<std::pair<int, int> > PmergeMe::mergeInsertDeque(const std::deque<std
 
 /* ----------------------- utilities  ----------------------- */
 
-int PmergeMe::getMidPoint(int start, int end) {
-	return(start + (end - start) / 2);
+/*
+Jacobstal  : 0,1,1,3,5,11,21...
+then insert Jacob number first then the indexes before it
+
+skip index 0
+*/
+void	PmergeMe::generateJacobstalSequence(int size)
+{
+	if (size % 2 == 0)
+		size = size / 2;
+	else
+		size = (size / 2) + 1;
+
+
+	this->_jacobsthalSequence.clear();
+	int last = 1, before_last = 1, next = 0;
+	_jacobsthalSequence.push_back(1);
+	_jacobsthalSequence.push_back(1);
+
+	while (last < size)
+	{
+		next = last + (2* before_last);
+		if (next >= size)
+			next = size;
+		before_last = last;
+		last = next;
+		for (int i = next; i >= next; i--)
+			_jacobsthalSequence.push_back(i);
+	}
+
+	#ifdef DEBUG_MODE
+		std::vector<int>::const_iterator it;
+		for (it = _jacobsthalSequence.begin(); it != _jacobsthalSequence.end(); ++it)
+			std::cout << *it << " ";
+		std::cout << " _jacobsthalSequence" << std::endl;
+	#endif
+
+
+
 }
-
-
 
 /* ----------------------- printing  ----------------------- */
 
