@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/04 16:59:14 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:58:45 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,17 @@ PmergeMe::PmergeMe()
 PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
 {
 
-    _vec = vector;
-    _deq = deque;
+	_vec = vector;
+	_deq = deque;
 
 
 	generateJacobstalSequence(_vec.size());
 
-    printVector(1);
-    printDeque(1);
+	printVector(1);
+	printDeque(1);
 
-	sort_vector();
+	_vec = sort_vector();
 	sort_deque();
-
-
 
 	printVector(0);
 	printDeque(0);
@@ -72,7 +70,7 @@ recursively sort the [n/2] larger elements from each pair
 
 /* ----------------------- vector ----------------------- */
 
-void PmergeMe::sort_vector()
+const std::vector<int> PmergeMe::sort_vector()
 {
 	std::vector<std::pair<int, int> >	pairs;
 	std::vector<int>::iterator			it;
@@ -118,6 +116,8 @@ void PmergeMe::sort_vector()
 		mainchain.push_back(it->first);
 		pend.push_back(it->second);
 	}
+	if (mainchain[0] == -1)
+		 mainchain.erase(mainchain.begin());
 	if (!pend.empty())
 		mainchain.insert(mainchain.begin(), pend[0]);
 
@@ -134,6 +134,30 @@ void PmergeMe::sort_vector()
 		}
 		std::cout << std::endl;
 	#endif
+
+	std::vector<int>::iterator itJt = this->_jacobsthalSequence.begin();
+	std::vector<int>::iterator insertLocation;
+
+	int temp_value;
+	for (itJt = this->_jacobsthalSequence.begin(); itJt != this->_jacobsthalSequence.end(); itJt++)
+	{
+		if (*itJt == 0)
+			continue;
+		temp_value = pend[*itJt];
+		insertLocation = std::lower_bound(mainchain.begin(), mainchain.end(), temp_value);
+		mainchain.insert(insertLocation, temp_value);
+	}
+
+
+	#ifdef DEBUG_MODE
+		std::cout << "Mainchain: ";
+		for (std::vector<int>::iterator it = mainchain.begin(); it != mainchain.end(); ++it) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+	#endif
+
+	return mainchain;
 
 }
 
