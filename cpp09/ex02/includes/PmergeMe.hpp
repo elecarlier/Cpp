@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:18:21 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/05 14:59:28 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:13:44 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <vector>
 #include <deque>
 #include <sstream>
+#include <time.h>
 
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"
@@ -48,6 +49,7 @@ class PmergeMe {
 
 		void printVector(bool is_before);
 		void printDeque(bool is_before);
+		void printTime(int size);
 
 		const std::vector<int> sort_vector();
 		const std::deque<int> sort_deque();

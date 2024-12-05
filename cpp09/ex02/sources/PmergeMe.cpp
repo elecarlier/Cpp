@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/05 15:03:12 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:14:41 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
 
 	printVector(0);
 	printDeque(0);
+
+	printTime(_vec.size());
 
 }
 
@@ -72,6 +74,7 @@ recursively sort the [n/2] larger elements from each pair
 
 const std::vector<int> PmergeMe::sort_vector()
 {
+	clock_t start = clock();
 	std::vector<std::pair<int, int> >	pairs;
 	std::vector<int>::iterator			it;
 
@@ -157,6 +160,8 @@ const std::vector<int> PmergeMe::sort_vector()
 		std::cout << std::endl;
 	#endif
 
+	clock_t end = clock();
+	this->_vectorSortingTime = ((double)(end - start) / CLOCKS_PER_SEC) *1000000;
 	return mainchain;
 
 }
@@ -251,6 +256,8 @@ std::vector<std::pair<int, int> > PmergeMe::mergeInsertSortVector( const std::ve
 
 const std::deque<int> PmergeMe::sort_deque()
 {
+	clock_t start = clock();
+
 	std::deque<std::pair<int, int> >	pairs;
 	std::deque<int>::iterator			it;
 
@@ -306,6 +313,9 @@ const std::deque<int> PmergeMe::sort_deque()
 		mainchain.insert(insertLocation, temp_value);
 	}
 
+	clock_t end = clock();
+
+	this->_dequeSortingTime = ((double)(end - start) / CLOCKS_PER_SEC) *1000000;
 	return mainchain;
 }
 
@@ -424,6 +434,11 @@ void	PmergeMe::generateJacobstalSequence(int size)
 
 /* ----------------------- printing  ----------------------- */
 
+void PmergeMe::printTime(int size)
+{
+	std::cout << "Time to process a range of " <<  size << "elements with std::vector  : " << this->_vectorSortingTime << "us" << std::endl;
+	std::cout << "Time to process a range of "<< size << "elements with std::deque  : " << this->_dequeSortingTime << "us" << std::endl;
+}
 
 void PmergeMe::printVector(bool is_before)
 {
