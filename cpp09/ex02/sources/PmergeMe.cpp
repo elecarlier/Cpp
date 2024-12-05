@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/05 14:58:45 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:03:12 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
 	printDeque(1);
 
 	_vec = sort_vector();
-	sort_deque();
+	_deq = sort_deque();
 
 	printVector(0);
 	printDeque(0);
@@ -165,13 +165,13 @@ std::vector<std::pair<int, int> > PmergeMe::mergeInsertVector(const std::vector<
 {
 
 	#ifdef MERGEINSERT
-        std::cout << "Merging two vectors..." << std::endl;
-        std::cout << "	 Left vector: ";
+		std::cout << "Merging two vectors..." << std::endl;
+		std::cout << "	 Left vector: ";
 		printPairs(left);
-        std::cout << "	 Right vector: ";
+ 		std::cout << "	 Right vector: ";
 		printPairs(right);
-        std::cout << std::endl;
-    #endif
+		std::cout << std::endl;
+	#endif
 
 	std::vector<std::pair<int, int> > result;
 	std::vector<std::pair<int, int> >::const_iterator itLeft = left.begin();
@@ -249,7 +249,7 @@ std::vector<std::pair<int, int> > PmergeMe::mergeInsertSortVector( const std::ve
 
 /* ----------------------- deque ----------------------- */
 
-void PmergeMe::sort_deque()
+const std::deque<int> PmergeMe::sort_deque()
 {
 	std::deque<std::pair<int, int> >	pairs;
 	std::deque<int>::iterator			it;
@@ -281,6 +281,32 @@ void PmergeMe::sort_deque()
 		printPairs(pairs);
 	#endif
 
+	std::deque<int> mainchain, pend;
+
+	for (std::deque<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
+	{
+		mainchain.push_back(it->first);
+		pend.push_back(it->second);
+	}
+	if (mainchain[0] == -1)
+		 mainchain.erase(mainchain.begin());
+	if (!pend.empty())
+		mainchain.insert(mainchain.begin(), pend[0]);
+
+	std::vector<int>::iterator itJt = this->_jacobsthalSequence.begin();
+	std::deque<int>::iterator insertLocation;
+
+	int temp_value;
+	for (itJt = this->_jacobsthalSequence.begin(); itJt != this->_jacobsthalSequence.end(); itJt++)
+	{
+		if (*itJt == 0)
+			continue;
+		temp_value = pend[*itJt];
+		insertLocation = std::lower_bound(mainchain.begin(), mainchain.end(), temp_value);
+		mainchain.insert(insertLocation, temp_value);
+	}
+
+	return mainchain;
 }
 
 
