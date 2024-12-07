@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:18:21 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/05 15:13:44 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:09:26 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class PmergeMe {
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
 		std::vector<int>	_jacobsthalSequence;
+		size_t				_size;
 
 		double				_vectorSortingTime;
 		double				_dequeSortingTime;
@@ -64,6 +65,7 @@ class PmergeMe {
 
 		double getVectorSortingTime();
 		double getDequeSortingTime();
+		size_t getSize();
 
 
 		template <typename Container>

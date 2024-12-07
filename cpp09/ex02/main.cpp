@@ -22,8 +22,10 @@ int	main(int argc, char* argv[])
 	{
 		try
 		{
+			double	vectorTime;
+			double	dequeTime;
 			std::vector<int> vector;
-			std::deque<int> deque;
+			clock_t start_v = clock();
 
 			for (int i = 1; i < argc; ++i)
 			{
@@ -36,10 +38,37 @@ int	main(int argc, char* argv[])
 				if (nbr < 0)
 					throw std::out_of_range("Negative number");
 				vector.push_back(nbr);
+			}
+			clock_t end_v = clock();
+			double vector_dataManagement = ((double)(end_v - start_v) / CLOCKS_PER_SEC) *1000000;
+
+
+			clock_t start_d = clock();
+			std::deque<int> deque;
+			for (int i = 1; i < argc; ++i)
+			{
+				std::stringstream ss(argv[i]);
+				int nbr;
+
+				if (!(ss >> nbr) || !(ss.eof()))
+					throw std::invalid_argument("Invalid number");
+
+				if (nbr < 0)
+					throw std::out_of_range("Negative number");
 				deque.push_back(nbr);
 			}
+			clock_t end_d = clock();
+			double deque_dataManagement = ((double)(end_d - start_d) / CLOCKS_PER_SEC) *1000000;
 
 			PmergeMe Pme(vector, deque);
+
+			vectorTime = Pme.getVectorSortingTime() + vector_dataManagement;
+			dequeTime =  Pme.getDequeSortingTime() + deque_dataManagement;
+
+
+			std::cout << "Time to process a range of " << Pme.getSize() << " elements with std::vector : " << vectorTime<< "us" << std::endl;
+			std::cout << "Time to process a range of "<< Pme.getSize() << " elements with std::deque : " << dequeTime << "us" << std::endl;
+
 
 		}
 
@@ -51,3 +80,4 @@ int	main(int argc, char* argv[])
 	return 0;
 
 }
+

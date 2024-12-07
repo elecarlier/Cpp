@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/07 14:53:49 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:16:00 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
 	_vec = vector;
 	_deq = deque;
 
-
+	_size = _vec.size();
 	generateJacobstalSequence(_vec.size());
 
 	printVector(1);
@@ -36,7 +36,7 @@ PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
 	printVector(0);
 	//printDeque(0);
 
-	printTime(_vec.size());
+	//printTime(_vec.size());
 
 }
 
@@ -465,4 +465,9 @@ double PmergeMe::getVectorSortingTime()
 double PmergeMe::getDequeSortingTime()
 {
 	return _dequeSortingTime;
+}
+
+size_t PmergeMe::getSize()
+{
+	return _size;
 }
