@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:53:06 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/02 14:17:34 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:32:26 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@
 #include <algorithm>
 #include <limits>
 #include <cctype>
+#include <iomanip>
 
+#include <string>    // Pour std::string, std::stoi, etc.
+#include <sstream>   // Pour std::stringstream, std::istringstream
+#include <cctype>    // Pour isdigit()
+#include <iostream>
 
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"
@@ -37,7 +42,6 @@ class BitcoinExchange {
 	private:
 		std::map<std::string, double> _dataMap;
 
-
 	public:
 		BitcoinExchange(std::string date);
 		BitcoinExchange();
@@ -49,6 +53,7 @@ class BitcoinExchange {
 		bool isValidDate(const std::string& date);
 		void readInputFile(std::string path);
 		void parseDatebase();
+		void writeDatabaseToTempFile();
 
 		class OpenFileException : public std::exception {
 			public:
@@ -71,8 +76,12 @@ class BitcoinExchange {
 			public:
 				virtual const char* what() const throw();
 		};
+		class emptyLine : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
-std::ostream &operator<<(std::ostream &o, BitcoinExchange const &i);
+bool isNotSpace(unsigned char c);
 
 #endif // BitcoinExchange_HPP
