@@ -125,7 +125,7 @@ void BitcoinExchange::readInputFile(std::string path)
 			std::cerr << "Error: Invalid date => " << date << std::endl;
 
 		} catch (const InvalidValue &e) {
-			std::cerr << "Error: Invalid value for date: " << date << " with value : " << std::fixed << std::setprecision(0) << value << std::endl;
+			std::cerr << "Error: Invalid value for date: " << date << " with empty value" << std::endl;
 
 		} catch (const ValueNegativeException &e) {
 			std::cerr << "Error: Value is negative for date: " << date << " with value : " << std::fixed << std::setprecision(0) << value << std::endl;
