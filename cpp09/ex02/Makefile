@@ -3,7 +3,7 @@ RESET = \033[0m
 
 NAME = PmergeMe
 
-DEBUG = 1
+DEBUG = 0
 MERGEINSERT = 0
 
 CC = c++

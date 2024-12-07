@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:20:11 by ecarlier          #+#    #+#             */
-/*   Updated: 2024/12/05 15:14:41 by ecarlier         ###   ########.fr       */
+/*   Updated: 2024/12/07 14:53:49 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ PmergeMe::PmergeMe(const std::vector<int> &vector, const std::deque<int> &deque)
 	generateJacobstalSequence(_vec.size());
 
 	printVector(1);
-	printDeque(1);
+	//printDeque(1);
 
 	_vec = sort_vector();
 	_deq = sort_deque();
 
 	printVector(0);
-	printDeque(0);
+	//printDeque(0);
 
 	printTime(_vec.size());
 
@@ -214,19 +214,18 @@ std::vector<std::pair<int, int> > PmergeMe::mergeInsertVector(const std::vector<
 std::vector<std::pair<int, int> > PmergeMe::mergeInsertSortVector( const std::vector<std::pair<int, int> >& pairs)
 {
 	#ifdef MERGEINSERT
-        std::cout << "Starting mergeInsertSort on vector with pairs : ";
+		std::cout << "Starting mergeInsertSort on vector with pairs : ";
 		printPairs(pairs);
-        std::cout << RESET << std::endl;
-    #endif
+		std::cout << RESET << std::endl;
+	#endif
 	if (pairs.size() <= 1)
 	{
 		 #ifdef MERGEINSERT
-            std::cout << "Base case reached with vector: ";
-            for (std::vector<std::pair<int, int> >::const_iterator it = pairs.begin(); it != pairs.end(); ++it) {
-                std::cout << "(" << it->first << ", " << it->second << ") ";
-            }
-            std::cout << RESET << std::endl;
-        #endif
+			std::cout << "Base case reached with vector: ";
+			for (std::vector<std::pair<int, int> >::const_iterator it = pairs.begin(); it != pairs.end(); ++it)
+				std::cout << "(" << it->first << ", " << it->second << ") ";
+			std::cout << RESET << std::endl;
+		#endif
 		return pairs;
 	}
 
@@ -379,12 +378,6 @@ std::deque<std::pair<int, int> > PmergeMe::mergeInsertDeque(const std::deque<std
 	return result;
 }
 
-
-
-
-
-
-
 /* ----------------------- utilities  ----------------------- */
 
 /*
@@ -427,25 +420,22 @@ void	PmergeMe::generateJacobstalSequence(int size)
 			std::cout << RESET << *it << " ";
 		std::cout << " _jacobsthalSequence" << std::endl;
 	#endif
-
-
-
 }
 
 /* ----------------------- printing  ----------------------- */
 
 void PmergeMe::printTime(int size)
 {
-	std::cout << "Time to process a range of " <<  size << "elements with std::vector  : " << this->_vectorSortingTime << "us" << std::endl;
-	std::cout << "Time to process a range of "<< size << "elements with std::deque  : " << this->_dequeSortingTime << "us" << std::endl;
+	std::cout << "Time to process a range of " <<  size << " elements with std::vector : " << this->_vectorSortingTime << "us" << std::endl;
+	std::cout << "Time to process a range of "<< size << " elements with std::deque : " << this->_dequeSortingTime << "us" << std::endl;
 }
 
 void PmergeMe::printVector(bool is_before)
 {
 	if (is_before)
-		std::cout << RESET << "Vector "  << "before:\t";
+		std::cout << RESET <<  "before:\t";
 	else
-		std::cout << RESET << "Vector "<< "after:\t";
+		std::cout << RESET << "after:\t";
 
 	std::vector<int>::const_iterator it;
 	for (it = _vec.begin(); it != _vec.end(); ++it)

@@ -14,14 +14,13 @@ recursively sort the [n/2] larger elements from each pair
 
 int	main(int argc, char* argv[])
 {
-
 	if (argc < 2) {
 		std::cout << "Error" << std::endl;
 		return (0);
 	}
 	else
 	{
-        try
+		try
 		{
 			std::vector<int> vector;
 			std::deque<int> deque;
