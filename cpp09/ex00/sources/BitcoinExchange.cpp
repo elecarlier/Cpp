@@ -80,8 +80,6 @@ bool BitcoinExchange::isValidDate(const std::string& date)
 }
 
 
-
-
 void BitcoinExchange::readInputFile(std::string path)
 {
 	std::ifstream file(path.c_str());
@@ -137,7 +135,6 @@ void BitcoinExchange::readInputFile(std::string path)
 			std::cerr << "Error: Unknown error for date: " << date << " with value : " << std::fixed << std::setprecision(0) << value << std::endl;
 		}
 	}
-
 
 	file.close();
 }
@@ -253,5 +250,5 @@ void BitcoinExchange::writeDatabaseToTempFile() {
 }
 
 bool isNotSpace(unsigned char c) {
-    return !std::isspace(c);
+	return !std::isspace(c);
 }
